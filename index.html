@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Paper Wing Games — Brain, Word &amp; Tactical Logic Puzzles</title>
+  <meta name="description" content="Paper Wing Games LLC is an independent game studio crafting visually stunning, challenging, and entertaining brain and logic puzzle games, home of Summit Rangers: Tactical Trail Logic." />
+  <style>
+    :root {
+      --bg-deep: #0b1d16;
+      --bg-forest: #132e23;
+      --bg-card: rgba(23, 54, 41, 0.78);
+      --gold-bright: #fde68a;
+      --gold-warm: #f59e0b;
+      --mint-soft: #d1fae5;
+      --mint-accent: #52b788;
+      --text-primary: #f8fafc;
+      --text-muted: #cbd5e1;
+      --border-subtle: rgba(253, 230, 138, 0.22);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(circle at 50% 0%, #1b4332 0%, var(--bg-deep) 70%);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(11, 29, 22, 0.85);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: 0.03em;
+    }
+
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--gold-bright), var(--gold-warm));
+      display: grid;
+      place-items: center;
+      color: #1b4332;
+      font-weight: 900;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--mint-soft);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--gold-bright);
+    }
+
+    main {
+      flex: 1;
+      max-width: 1080px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem;
+      container-type: inline-size;
+    }
+
+    .hero {
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto 4rem;
+    }
+
+    .studio-pill {
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(82, 183, 136, 0.18);
+      border: 1px solid rgba(82, 183, 136, 0.4);
+      color: var(--gold-bright);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 1.4rem + 4vw, 3.75rem);
+      line-height: 1.12;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--gold-bright);
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero p {
+      font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.25rem);
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .game-showcase {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      padding: clamp(1.5rem, 3vw, 3rem);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      margin-bottom: 3.5rem;
+    }
+
+    .game-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.75rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 1.5rem;
+    }
+
+    .game-badge {
+      color: var(--mint-accent);
+      font-weight: 800;
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .game-title {
+      font-size: clamp(1.75rem, 1.2rem + 2.5vw, 2.5rem);
+      font-weight: 900;
+      color: #ffffff;
+    }
+
+    .game-subtitle {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold-bright);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-top: 1.75rem;
+    }
+
+    @container (min-width: 680px) {
+      .feature-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .feature-card {
+      background: rgba(11, 29, 22, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 1.35rem;
+    }
+
+    .feature-card h3 {
+      color: var(--gold-bright);
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+    }
+
+    .store-badges {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .store-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.75rem 1.35rem;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #0f172a;
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-decoration: none;
+    }
+
+    .contact-card {
+      text-align: center;
+      background: rgba(19, 46, 35, 0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 2.25rem 1.5rem;
+    }
+
+    .contact-card h2 {
+      color: var(--gold-bright);
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-card a {
+      color: var(--gold-bright);
+      font-weight: 700;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--mint-soft);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-inner">
+      <a href="/" class="brand">
+        <span class="brand-icon" aria-hidden="true">✦</span>
+        <span>Paper Wing Games</span>
+      </a>
+      <nav aria-label="Primary Navigation">
+        <a href="#games">Games</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="mailto:support@paperwinggames.com">Support</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <span class="studio-pill">Independent Game Studio</span>
+      <h1>Clever Puzzles. Stunning Worlds.</h1>
+      <p>
+        Paper Wing Games LLC crafts visually rich, tactical brain and word puzzle games designed to challenge your mind and delight your senses.
+      </p>
+    </section>
+
+    <section id="games" class="game-showcase">
+      <div class="game-header">
+        <span class="game-badge">Featured Release · iOS &amp; Android</span>
+        <h2 class="game-title">Summit Rangers</h2>
+        <div class="game-subtitle">Tactical Trail Logic</div>
+      </div>
+      <p>
+        Embark on an alpine logic adventure with Ranger Barnaby and his crew of 10 woodland rangers. Station one ranger in every row, column, and color territory across 276 authentic world mountain summits—using pure step-by-step deduction with zero guessing required.
+      </p>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>Pure Spatial Deduction</h3>
+          <p>Place rangers so every trail, pass, and color sector is protected—without any two rangers ever touching, even diagonally.</p>
+        </div>
+        <div class="feature-card">
+          <h3>276 Real World Peaks</h3>
+          <p>Climb from coastal foothills to 29,032 ft Himalayan summits, earning collectible landmark badges for your Summit Wall.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Daily Peak Expeditions</h3>
+          <p>Tackle a fresh, certified-solvable daily mountain puzzle every day and build your expedition streak.</p>
+        </div>
+      </div>
+
+      <div class="store-badges">
+        <span class="store-pill">Coming Soon to Apple App Store &amp; Google Play</span>
+      </div>
+    </section>
+
+    <section class="contact-card">
+      <h2>Player Support &amp; Inquiries</h2>
+      <p>
+        Have questions, feedback, or need assistance with one of our games? Reach out to our team directly at
+        <a href="mailto:support@paperwinggames.com">support@paperwinggames.com</a>.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+      <a href="app-ads.txt">app-ads.txt</a>
+      <a href="mailto:support@paperwinggames.com">support@paperwinggames.com</a>
+    </div>
+    <p>&copy; 2026 Paper Wing Games LLC. All rights reserved.</p>
+  </footer>
+</body>
+</html>
