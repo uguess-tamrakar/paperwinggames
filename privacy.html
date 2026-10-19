@@ -4,184 +4,207 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy — Paper Wing Games LLC</title>
-  <meta name="description" content="Official Privacy Policy for Summit Rangers: Tactical Trail Logic and Paper Wing Games LLC." />
+  <meta name="description" content="Privacy Policy for Paper Wing Games LLC and Summit Rangers: Tactical Trail Logic." />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-deep: #0b1d16;
-      --bg-card: rgba(23, 54, 41, 0.85);
-      --gold-bright: #fde68a;
-      --mint-soft: #d1fae5;
+      color-scheme: dark;
+      --bg-abyss: #070b14;
+      --bg-midnight: #0c1322;
+      --bg-card: rgba(19, 29, 51, 0.78);
+      --sky-bright: #38bdf8;
+      --gold-summit: #fde68a;
       --text-primary: #f8fafc;
-      --text-muted: #cbd5e1;
-      --border-subtle: rgba(253, 230, 138, 0.22);
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --border-subtle: rgba(148, 163, 184, 0.16);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      min-height: 100dvh;
-      display: flex;
-      flex-direction: column;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: radial-gradient(circle at 50% 0%, #1b4332 0%, var(--bg-deep) 70%);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(91, 140, 201, 0.24) 0%, transparent 65%),
+        linear-gradient(180deg, #070b14 0%, #0c1322 100%);
       color: var(--text-primary);
-      line-height: 1.7;
+      line-height: 1.72;
+      min-height: 100vh;
     }
 
-    header {
-      border-bottom: 1px solid var(--border-subtle);
-      background: rgba(11, 29, 22, 0.9);
-    }
-
-    .nav-inner {
-      max-width: 900px;
+    .container {
+      max-width: 880px;
       margin: 0 auto;
-      padding: 1rem 1.5rem;
+      padding: 0 24px 64px;
+    }
+
+    .navbar-wrap {
+      padding: 16px 20px 0;
+      margin-bottom: 40px;
+    }
+
+    header.navbar {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 12px 22px;
+      background: rgba(12, 19, 34, 0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 999px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
     .brand {
-      color: var(--gold-bright);
+      display: flex;
+      align-items: center;
+      gap: 12px;
       text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .brand img {
+      width: 42px;
+      height: auto;
+    }
+
+    .brand span {
+      font-family: 'Outfit', sans-serif;
       font-weight: 800;
-      font-size: 1.15rem;
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+      background: linear-gradient(135deg, #ffffff 0%, #bae6fd 60%, #c4b5fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .back-link {
-      color: var(--mint-soft);
+      color: var(--text-secondary);
       text-decoration: none;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 600;
     }
 
-    main {
-      flex: 1;
-      max-width: 900px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem 4rem;
+    .back-link:hover {
+      color: var(--sky-bright);
     }
 
     .policy-card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      border-radius: 20px;
-      padding: clamp(1.5rem, 3vw, 2.75rem);
+      border-radius: 26px;
+      padding: 44px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
     }
 
     h1 {
-      font-size: clamp(1.8rem, 1.3rem + 2vw, 2.5rem);
-      color: var(--gold-bright);
-      margin-bottom: 0.4rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
     }
 
     .updated {
-      color: var(--mint-soft);
+      color: var(--text-muted);
       font-size: 0.9rem;
-      margin-bottom: 2rem;
+      margin-bottom: 32px;
     }
 
     h2 {
-      color: var(--gold-bright);
+      font-family: 'Outfit', sans-serif;
       font-size: 1.25rem;
-      margin-top: 1.8rem;
-      margin-bottom: 0.6rem;
+      font-weight: 700;
+      color: var(--sky-bright);
+      margin: 28px 0 10px;
     }
 
-    p, ul {
-      color: var(--text-muted);
-      margin-bottom: 1rem;
+    p, li {
+      color: var(--text-secondary);
+      font-size: 0.98rem;
+      margin-bottom: 12px;
     }
 
     ul {
-      padding-left: 1.4rem;
-    }
-
-    li {
-      margin-bottom: 0.4rem;
+      padding-left: 22px;
+      margin-bottom: 16px;
     }
 
     a {
-      color: var(--gold-bright);
+      color: var(--sky-bright);
+      text-decoration: none;
     }
 
-    footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 1.5rem;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.9rem;
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+      .policy-card {
+        padding: 28px 22px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="nav-inner">
-      <a href="index.html" class="brand">Paper Wing Games</a>
-      <a href="index.html" class="back-link">&larr; Back to Home</a>
-    </div>
-  </header>
+  <div class="navbar-wrap">
+    <header class="navbar">
+      <a href="index.html" class="brand">
+        <img src="assets/paper-wing-wings.png" alt="Paper Wing Games Origami Wings" width="42" height="18" />
+        <span>PAPER WING GAMES</span>
+      </a>
+      <a href="index.html" class="back-link">← Back to Home</a>
+    </header>
+  </div>
 
-  <main>
-    <article class="policy-card">
+  <div class="container">
+    <div class="policy-card">
       <h1>Privacy Policy</h1>
-      <p class="updated">Effective Date: October 19, 2026 &middot; Paper Wing Games LLC</p>
+      <p class="updated">Effective Date: October 19, 2026 &bull; Paper Wing Games LLC</p>
 
-      <h2>1. Overview</h2>
       <p>
-        Paper Wing Games LLC ("Paper Wing Games," "we," "our," or "us") develops and publishes mobile games, including <strong>Summit Rangers: Tactical Trail Logic</strong>. We are committed to providing a safe, entertaining, and privacy-conscious gaming experience for players of all ages.
+        <strong>Paper Wing Games LLC</strong> ("Paper Wing Games," "we," "our," or "us") respects your privacy. This Privacy Policy explains how information is handled when you play our mobile games—including <strong>Summit Rangers: Tactical Trail Logic</strong>—or visit <a href="https://paperwinggames.com">paperwinggames.com</a>.
       </p>
 
-      <h2>2. Information We Collect &amp; Local Device Storage</h2>
+      <h2>1. Information Stored Locally on Your Device</h2>
       <p>
-        We do not require user accounts and do not directly collect, store, or sell personal contact information such as your name, email address, phone number, or physical street address.
+        Your puzzle progress, unlocked mountain tiers, daily expedition streaks, Golden Pinecones, and audio preferences are stored locally on your device. We do not require you to create an account or submit personal contact information to play.
       </p>
-      <ul>
-        <li><strong>Local Game Progress:</strong> All puzzle progression, altitude records, unlocked badges, daily streaks, Golden Pinecone balances, and settings preferences are stored locally on your device.</li>
-        <li><strong>Resetting Local Data:</strong> You may clear or reset your local game progression at any time via the in-game Settings menu or by uninstalling the application.</li>
-      </ul>
 
-      <h2>3. Third-Party Services &amp; SDKs</h2>
+      <h2>2. Advertising &amp; Analytics Partners</h2>
       <p>
-        Our games integrate standard platform and monetization services that may process limited device and diagnostic data in accordance with their respective privacy policies and your consent preferences:
+        To keep our games free to play, we work with trusted third-party service providers that may process device identifiers (such as your mobile Advertising ID / IDFA), coarse IP-based location, diagnostic crash logs, and ad interaction metrics:
       </p>
       <ul>
-        <li>
-          <strong>Google Mobile Ads (AdMob):</strong> Used to display optional rewarded video ads and interstitial ads. Depending on your region and consent settings (managed via Google's User Messaging Platform and Apple's App Tracking Transparency framework), Google may access pseudonymous advertising identifiers (IDFA on iOS or Advertising ID on Android), coarse IP location, and ad interaction metrics for ad delivery, frequency capping, and fraud prevention. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.
-        </li>
-        <li>
-          <strong>Apple App Store &amp; Google Play In-App Purchases:</strong> All financial transactions for in-app purchases (such as the Explorer Pass or Golden Pinecone bundles) are processed directly by Apple or Google. Paper Wing Games never receives or stores your credit card or payment details.
-        </li>
+        <li><strong>Google AdMob:</strong> Serves optional rewarded video ads and banner/interstitial placements. Depending on your region and consent preferences, ads may be contextual (non-personalized) or personalized.</li>
+        <li><strong>Google Firebase (Crashlytics &amp; Analytics):</strong> Helps us diagnose app crashes, maintain stability, and understand aggregate level completion rates.</li>
+        <li><strong>Apple App Store &amp; Google Play Billing:</strong> Processes optional in-app purchases (such as removing ads or unlocking tool bundles). Payment details are handled directly by Apple or Google and are never shared with us.</li>
       </ul>
 
-      <h2>4. Your Privacy Rights &amp; Ad Choices (GDPR / CCPA / ATT)</h2>
-      <ul>
-        <li><strong>In-App Consent Management:</strong> You can review or update your ad consent preferences at any time inside the game by opening <em>Settings &rarr; Privacy &amp; Data</em>.</li>
-        <li><strong>Device-Level Controls:</strong> On iOS, you can manage tracking permissions under <em>Settings &rarr; Privacy &amp; Security &rarr; Tracking</em>. On Android, you can reset or delete your advertising ID under <em>Settings &rarr; Privacy &rarr; Ads</em>.</li>
-      </ul>
-
-      <h2>5. Children's Privacy (COPPA Compliance)</h2>
+      <h2>3. Your Privacy Choices &amp; Consent</h2>
       <p>
-        Summit Rangers complies with the Children's Online Privacy Protection Act (COPPA) and applicable international child privacy regulations. We do not knowingly collect personal information from children. If you believe we have inadvertently received personal information from a child, please contact us immediately so we can delete it.
+        When launching our games, you can choose between personalized or contextual (non-personalized) advertising experiences, and you can update your privacy and consent settings at any time inside the in-game <strong>Settings → Privacy Preferences</strong> menu or through your device's system privacy settings (iOS App Tracking Transparency / Android Advertising ID controls).
       </p>
 
-      <h2>6. Contact Us</h2>
+      <h2>4. Children's Privacy</h2>
       <p>
-        If you have any questions or concerns regarding this Privacy Policy or our data practices, please contact Paper Wing Games LLC at:
-        <br />
-        <strong>Email:</strong> <a href="mailto:support@paperwinggames.com">support@paperwinggames.com</a>
+        Our games are intended for a general audience and we do not knowingly collect personal information from children under the age of 13 (or the applicable age of digital consent in your jurisdiction).
       </p>
-    </article>
-  </main>
 
-  <footer>
-    <p>&copy; 2026 Paper Wing Games LLC. All rights reserved.</p>
-  </footer>
+      <h2>5. Data Deletion &amp; Contact Us</h2>
+      <p>
+        Because gameplay data is stored locally on your device, uninstalling the app or clearing app storage immediately deletes your local progress. If you have any questions about this Privacy Policy or wish to submit a privacy request, please contact us at:
+      </p>
+      <p>
+        <strong>Paper Wing Games LLC</strong><br />
+        Email: <a href="mailto:support@paperwinggames.com">support@paperwinggames.com</a>
+      </p>
+    </div>
+  </div>
 </body>
 </html>

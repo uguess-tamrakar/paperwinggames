@@ -4,161 +4,193 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terms of Service — Paper Wing Games LLC</title>
-  <meta name="description" content="Terms of Service for Summit Rangers: Tactical Trail Logic and Paper Wing Games LLC." />
+  <meta name="description" content="Terms of Service for Paper Wing Games LLC and Summit Rangers: Tactical Trail Logic." />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-deep: #0b1d16;
-      --bg-card: rgba(23, 54, 41, 0.85);
-      --gold-bright: #fde68a;
-      --mint-soft: #d1fae5;
+      color-scheme: dark;
+      --bg-abyss: #070b14;
+      --bg-midnight: #0c1322;
+      --bg-card: rgba(19, 29, 51, 0.78);
+      --sky-bright: #38bdf8;
+      --gold-summit: #fde68a;
       --text-primary: #f8fafc;
-      --text-muted: #cbd5e1;
-      --border-subtle: rgba(253, 230, 138, 0.22);
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --border-subtle: rgba(148, 163, 184, 0.16);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      min-height: 100dvh;
-      display: flex;
-      flex-direction: column;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: radial-gradient(circle at 50% 0%, #1b4332 0%, var(--bg-deep) 70%);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(91, 140, 201, 0.24) 0%, transparent 65%),
+        linear-gradient(180deg, #070b14 0%, #0c1322 100%);
       color: var(--text-primary);
-      line-height: 1.7;
+      line-height: 1.72;
+      min-height: 100vh;
     }
 
-    header {
-      border-bottom: 1px solid var(--border-subtle);
-      background: rgba(11, 29, 22, 0.9);
-    }
-
-    .nav-inner {
-      max-width: 900px;
+    .container {
+      max-width: 880px;
       margin: 0 auto;
-      padding: 1rem 1.5rem;
+      padding: 0 24px 64px;
+    }
+
+    .navbar-wrap {
+      padding: 16px 20px 0;
+      margin-bottom: 40px;
+    }
+
+    header.navbar {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 12px 22px;
+      background: rgba(12, 19, 34, 0.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--border-subtle);
+      border-radius: 999px;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
     .brand {
-      color: var(--gold-bright);
+      display: flex;
+      align-items: center;
+      gap: 12px;
       text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .brand img {
+      width: 42px;
+      height: auto;
+    }
+
+    .brand span {
+      font-family: 'Outfit', sans-serif;
       font-weight: 800;
-      font-size: 1.15rem;
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+      background: linear-gradient(135deg, #ffffff 0%, #bae6fd 60%, #c4b5fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .back-link {
-      color: var(--mint-soft);
+      color: var(--text-secondary);
       text-decoration: none;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 600;
     }
 
-    main {
-      flex: 1;
-      max-width: 900px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 2.5rem 1.5rem 4rem;
+    .back-link:hover {
+      color: var(--sky-bright);
     }
 
     .policy-card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      border-radius: 20px;
-      padding: clamp(1.5rem, 3vw, 2.75rem);
+      border-radius: 26px;
+      padding: 44px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
     }
 
     h1 {
-      font-size: clamp(1.8rem, 1.3rem + 2vw, 2.5rem);
-      color: var(--gold-bright);
-      margin-bottom: 0.4rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
     }
 
     .updated {
-      color: var(--mint-soft);
+      color: var(--text-muted);
       font-size: 0.9rem;
-      margin-bottom: 2rem;
+      margin-bottom: 32px;
     }
 
     h2 {
-      color: var(--gold-bright);
+      font-family: 'Outfit', sans-serif;
       font-size: 1.25rem;
-      margin-top: 1.8rem;
-      margin-bottom: 0.6rem;
+      font-weight: 700;
+      color: var(--sky-bright);
+      margin: 28px 0 10px;
     }
 
     p {
-      color: var(--text-muted);
-      margin-bottom: 1rem;
+      color: var(--text-secondary);
+      font-size: 0.98rem;
+      margin-bottom: 12px;
     }
 
     a {
-      color: var(--gold-bright);
+      color: var(--sky-bright);
+      text-decoration: none;
     }
 
-    footer {
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 1.5rem;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.9rem;
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+      .policy-card {
+        padding: 28px 22px;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="nav-inner">
-      <a href="index.html" class="brand">Paper Wing Games</a>
-      <a href="index.html" class="back-link">&larr; Back to Home</a>
-    </div>
-  </header>
+  <div class="navbar-wrap">
+    <header class="navbar">
+      <a href="index.html" class="brand">
+        <img src="assets/paper-wing-wings.png" alt="Paper Wing Games Origami Wings" width="42" height="18" />
+        <span>PAPER WING GAMES</span>
+      </a>
+      <a href="index.html" class="back-link">← Back to Home</a>
+    </header>
+  </div>
 
-  <main>
-    <article class="policy-card">
+  <div class="container">
+    <div class="policy-card">
       <h1>Terms of Service</h1>
-      <p class="updated">Effective Date: October 19, 2026 &middot; Paper Wing Games LLC</p>
+      <p class="updated">Effective Date: October 19, 2026 &bull; Paper Wing Games LLC</p>
 
-      <h2>1. Acceptance of Terms</h2>
       <p>
-        By downloading, installing, or playing <strong>Summit Rangers: Tactical Trail Logic</strong> or visiting the websites of Paper Wing Games LLC ("Paper Wing Games"), you agree to these Terms of Service and our <a href="privacy.html">Privacy Policy</a>.
+        Welcome to <strong>Paper Wing Games LLC</strong>. By downloading, accessing, or playing our mobile applications (including <strong>Summit Rangers: Tactical Trail Logic</strong>) or visiting our website, you agree to these Terms of Service.
       </p>
 
-      <h2>2. License to Use</h2>
+      <h2>1. Personal License</h2>
       <p>
-        Paper Wing Games grants you a personal, non-exclusive, non-transferable, revocable license to download and use our games for personal, non-commercial entertainment purposes on devices you own or control, subject to the applicable Apple App Store or Google Play Store terms.
+        Paper Wing Games LLC grants you a personal, non-exclusive, non-transferable, revocable license to download and use our games for personal, non-commercial entertainment on devices you own or control.
       </p>
 
-      <h2>3. Virtual Items &amp; In-App Purchases</h2>
+      <h2>2. Virtual Items &amp; In-App Purchases</h2>
       <p>
-        Our games may include virtual currencies (such as Golden Pinecones), tools, or non-consumable passes (such as the Explorer Pass). Virtual items have no real-world monetary value, cannot be redeemed for cash, and are non-transferable. All in-app purchases are final and managed through the Apple App Store or Google Play Store billing systems.
+        Our games may include virtual currencies (such as Golden Pinecones), hints, or optional in-app purchases (such as ad-free permits or supply bundles). Virtual items have no real-world monetary value, cannot be redeemed for cash, and all purchases are processed and governed by the payment terms of the Apple App Store or Google Play Store.
       </p>
 
-      <h2>4. Intellectual Property</h2>
+      <h2>3. Intellectual Property</h2>
       <p>
-        All artwork, characters (including Ranger Barnaby and the Summit Rangers crew), audio, puzzles, code, and trademarks in our games are the exclusive property of Paper Wing Games LLC.
+        All artwork, puzzle designs, characters, audio, trademarks, and code in our games and on this website are the property of Paper Wing Games LLC and are protected by copyright and intellectual property laws.
       </p>
 
-      <h2>5. Disclaimer of Warranties &amp; Limitation of Liability</h2>
+      <h2>4. Disclaimer of Warranties &amp; Limitation of Liability</h2>
       <p>
-        Our games are provided on an "AS IS" and "AS AVAILABLE" basis without warranties of any kind. To the fullest extent permitted by law, Paper Wing Games LLC shall not be liable for any indirect, incidental, or consequential damages arising from your use of our games.
+        Our games are provided "as is" and "as available" without warranties of any kind. To the fullest extent permitted by applicable law, Paper Wing Games LLC shall not be liable for any indirect, incidental, or consequential damages arising from your use of our games.
       </p>
 
-      <h2>6. Contact Information</h2>
+      <h2>5. Contact Information</h2>
       <p>
-        For support or legal inquiries, please contact Paper Wing Games LLC at <a href="mailto:support@paperwinggames.com">support@paperwinggames.com</a>.
+        For support or questions regarding these Terms, please contact us at <a href="mailto:support@paperwinggames.com">support@paperwinggames.com</a>.
       </p>
-    </article>
-  </main>
-
-  <footer>
-    <p>&copy; 2026 Paper Wing Games LLC. All rights reserved.</p>
-  </footer>
+    </div>
+  </div>
 </body>
 </html>
