@@ -42,6 +42,12 @@
       scroll-behavior: smooth;
     }
 
+    /* Prevent HTML width/height attributes from ever distorting responsive images */
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
     body {
       font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
       background-color: var(--bg-abyss);
@@ -598,8 +604,10 @@
     }
 
     .barnaby-sprite {
-      max-height: 300px;
+      height: 295px;
       width: auto;
+      max-width: 100%;
+      object-fit: contain;
       filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.68));
       animation: floatBarnaby 4s ease-in-out infinite;
       transition: opacity 0.22s ease, transform 0.22s ease;
@@ -714,6 +722,7 @@
 
     .screenshot-card img {
       width: 100%;
+      height: auto;
       aspect-ratio: 9 / 16;
       object-fit: cover;
       display: block;
@@ -931,6 +940,28 @@
       flex-direction: column;
       justify-content: space-between;
       padding: 18px 20px;
+    }
+
+    /* Mystery Classified Summit Vault Card (#6) */
+    .mystery-vault-front {
+      background:
+        radial-gradient(circle at 50% 32%, rgba(253, 230, 138, 0.24) 0%, rgba(56, 189, 248, 0.12) 45%, transparent 72%),
+        linear-gradient(165deg, #0b192e 0%, #091524 55%, #050c16 100%);
+      border-color: rgba(253, 230, 138, 0.65);
+    }
+
+    .mystery-vault-crest {
+      width: 92px;
+      height: 92px;
+      margin: 22px auto 0;
+      border-radius: 26px;
+      background: radial-gradient(circle at 35% 30%, rgba(253, 230, 138, 0.28), rgba(15, 23, 42, 0.92));
+      border: 2px solid rgba(253, 230, 138, 0.65);
+      box-shadow: 0 12px 30px rgba(251, 191, 36, 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
     }
 
     .landmark-top-bar {
@@ -1205,16 +1236,57 @@
       font-size: 0.94rem;
     }
 
-    /* Press & Media Kit Section (#press) */
+    /* Upgraded Press & Media Kit Section (#press) */
     .press-section {
       padding: 16px 0 72px;
+    }
+
+    .press-hero-banner-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(253, 230, 138, 0.3);
+      border-radius: 28px;
+      padding: 24px;
+      margin-bottom: 28px;
+      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.45);
+    }
+
+    .press-banner-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .press-banner-top-row h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--gold-summit);
+    }
+
+    .press-banner-top-row span {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .press-feature-banner {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1024 / 500;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1.5px solid rgba(253, 230, 138, 0.38);
+      display: block;
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.5);
     }
 
     .press-grid {
       display: grid;
       grid-template-columns: 0.95fr 1.05fr;
       gap: 28px;
-      align-items: start;
+      align-items: stretch;
     }
 
     .press-card {
@@ -1222,6 +1294,9 @@
       border: 1px solid var(--border-subtle);
       border-radius: 26px;
       padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .press-card h3 {
@@ -1239,7 +1314,7 @@
 
     .fact-row {
       display: grid;
-      grid-template-columns: 140px 1fr;
+      grid-template-columns: 135px 1fr;
       gap: 12px;
       padding-bottom: 10px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.07);
@@ -1256,47 +1331,119 @@
       font-weight: 600;
     }
 
-    .press-feature-banner {
-      width: 100%;
-      border-radius: 16px;
-      border: 1px solid rgba(253, 230, 138, 0.32);
-      margin-bottom: 18px;
-      display: block;
-    }
-
     .press-boilerplate-box {
-      background: rgba(7, 11, 20, 0.65);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 14px;
-      padding: 14px 16px;
-      font-size: 0.85rem;
+      background: rgba(7, 11, 20, 0.68);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 16px;
+      padding: 16px 18px;
+      font-size: 0.86rem;
       color: var(--text-secondary);
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
-    .press-downloads-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-
-    .press-dl-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 10px 14px;
-      border-radius: 12px;
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.28);
-      color: #e0f2fe;
-      text-decoration: none;
-      font-size: 0.82rem;
+    .press-copy-btn {
+      margin-top: 10px;
+      appearance: none;
+      border: 1px solid rgba(110, 231, 183, 0.45);
+      background: rgba(16, 185, 129, 0.16);
+      color: #a7f3d0;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.78rem;
       font-weight: 700;
+      padding: 6px 13px;
+      border-radius: 999px;
+      cursor: pointer;
       transition: background 0.2s ease;
     }
 
-    .press-dl-link:hover {
-      background: rgba(56, 189, 248, 0.22);
+    .press-copy-btn:hover {
+      background: rgba(16, 185, 129, 0.28);
+    }
+
+    .press-angles-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-bottom: 18px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .press-angles-list li {
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+    }
+
+    .press-angles-list strong {
+      color: #ffffff;
+    }
+
+    /* Visual Brand Asset Thumbnails Grid */
+    .press-asset-visual-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .press-asset-tile {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(12, 21, 38, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .press-asset-tile:hover {
+      transform: translateY(-2px);
+      border-color: rgba(253, 230, 138, 0.55);
+      background: rgba(20, 34, 58, 0.92);
+    }
+
+    .press-asset-thumb {
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .press-asset-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .press-asset-meta {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .press-asset-meta strong {
+      display: block;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.84rem;
+      color: #ffffff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .press-asset-meta small {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--sky-bright);
+      font-weight: 600;
     }
 
     /* Support & Contact Card */
@@ -1419,7 +1566,7 @@
       }
 
       .summit-feature-pills,
-      .press-downloads-grid {
+      .press-asset-visual-grid {
         grid-template-columns: 1fr;
       }
 
@@ -1439,7 +1586,7 @@
       <nav class="nav-links">
         <a href="#summit-rangers">Summit Rangers</a>
         <a href="#screenshots">Screenshots</a>
-        <a href="#landmarks">112 Landmarks</a>
+        <a href="#landmarks">Summit Badges</a>
         <a href="#expedition-realms">Mountain Realms</a>
         <a href="#press">Press Kit</a>
         <a href="#support" class="nav-cta">Support</a>
@@ -1508,7 +1655,7 @@
             </div>
 
             <p class="summit-description">
-              Join <strong>Ranger Captain Barnaby</strong> and 10 Woodland Rangers on a handcrafted vertical expedition from sun-dappled Emerald Foothills to the 29,032 FT snow-swept Himalayan Crown. Station rangers across 1,070+ mountain trail grids, race the clock in Trail Blitz &amp; Triple Peak Relay, and collect 112 real-world mountain badges—with zero guesswork required.
+              Join <strong>Ranger Captain Barnaby</strong> and 10 Woodland Rangers on a handcrafted vertical expedition from sun-dappled Emerald Foothills to the 29,032 FT snow-swept Crown of the World. Station rangers across 1,070+ mountain trail grids, race the clock in Trail Blitz &amp; Triple Peak Relay, and unlock 112 real-world mountain badges—with zero guesswork required.
             </p>
 
             <div class="summit-feature-pills">
@@ -1539,7 +1686,7 @@
                 </div>
                 <div>
                   <h4>112 World Summit Badges</h4>
-                  <p>Earn elevation feet to unlock 3D flip cards for Giant's Causeway, Fuji, K2 &amp; Everest.</p>
+                  <p>Earn elevation feet to unlock 3D flip cards starting from Giant's Causeway (40 FT) upward!</p>
                 </div>
               </div>
             </div>
@@ -1713,7 +1860,7 @@
         <span class="section-tag">In-Game Tour</span>
         <h2 class="section-title">Interactive Screenshot Gallery</h2>
         <p class="section-subtitle">
-          Explore the complete 8-slide expedition experience—from pedagogical deduction hints and timed relays to 3D badge reveals. Click any screen to inspect full-size.
+          Explore the complete 8-slide expedition experience—from pedagogical deduction hints and timed relays to early-tier 3D badge reveals. Click any screen to inspect full-size.
         </p>
       </div>
 
@@ -1772,7 +1919,7 @@
         </button>
 
         <button type="button" class="screenshot-card" data-src="assets/screenshots/06_real_world_mountain_badges.png" data-title="6. Collect 112 Real-World Mountain Badges">
-          <img src="assets/screenshots/06_real_world_mountain_badges.png" alt="Mount Everest 29,032 FT 3D badge reveal screen" loading="lazy" width="720" height="1280" />
+          <img src="assets/screenshots/06_real_world_mountain_badges.png" alt="Haystack Rock 235 FT 3D badge reveal screen" loading="lazy" width="720" height="1280" />
           <div class="screenshot-card-meta">
             <span class="screenshot-step">Slide 06 • 112 Landmarks</span>
             <h4>Collect Iconic World Summits</h4>
@@ -1813,13 +1960,13 @@
       </dialog>
     </section>
 
-    <!-- Interactive 112 Real-World Landmark Cards Section -->
+    <!-- Non-Spoiler Early-Tier Landmark Cards + Classified High-Altitude Vault Section -->
     <section id="landmarks" class="landmarks-section cv-auto-section">
       <div class="section-header">
         <span class="section-tag">112 Authentic Summits &amp; Geological Wonders</span>
-        <h2 class="section-title">Earn Elevation. Unlock Iconic World Peaks.</h2>
+        <h2 class="section-title">Start in the Foothills. Unlock 112 Secret Peaks.</h2>
         <p class="section-subtitle">
-          Every solved trail rewards Elevation Feet (+FT) based on grid complexity, speed, and flawless accuracy. Cross real-world altitude thresholds to unlock 112 interactive 3D Landmark Badges—click any card below to flip it!
+          Every solved trail rewards Elevation Feet (+FT) based on grid complexity, speed, and flawless accuracy. Here is a peek at the <strong>first 5 Foothill Crest badges</strong> you earn in your opening trails—while the highest world summits remain locked in the expedition vault until you climb there yourself! Click any card to flip it in 3D.
         </p>
       </div>
 
@@ -1834,28 +1981,28 @@
         <div class="explainer-step">
           <div class="explainer-badge-num">2</div>
           <div>
-            <h4>Reach Real Altitude Milestones</h4>
-            <p>Unlock your first crest at <strong>40 FT (Giant's Causeway)</strong> after Trail 2, then ascend through 112 real peaks all the way to <strong>29,032 FT (Mount Everest)</strong>.</p>
+            <h4>Earn Early Foothill Crests</h4>
+            <p>Unlock your first crest at <strong>40 FT (Giant's Causeway)</strong> right after Trail 2, followed by coastal monoliths and sea cliffs across Tier I.</p>
           </div>
         </div>
         <div class="explainer-step">
           <div class="explainer-badge-num">3</div>
           <div>
-            <h4>Flip in 3D for Authentic Lore</h4>
-            <p>Inspect every badge on your Summit Wall and flip it 180° to read indigenous names, mountaineering history, geology, and native wildlife.</p>
+            <h4>Uncover 100+ Classified Summits</h4>
+            <p>Flip every unlocked badge 180° for indigenous lore and geology—and ascend all 12 tiers to reveal which legendary peaks await at 29,032 FT!</p>
           </div>
         </div>
       </div>
 
       <div class="landmarks-grid">
-        <!-- Card 1: Giant's Causeway -->
+        <!-- Card 1: Giant's Causeway (40 FT - Trail 2) -->
         <div class="landmark-flip-card" tabindex="0" role="button" aria-label="Flip Giant's Causeway landmark badge card">
           <div class="landmark-flip-inner">
             <div class="landmark-face landmark-front">
               <img src="assets/landmarks/giants_causeway.webp" alt="Giant's Causeway 3D Landmark Badge Artwork" loading="lazy" width="512" height="512" />
               <div class="landmark-front-overlay">
                 <div class="landmark-top-bar">
-                  <span class="landmark-tier-pill">Tier I • Foothill Crest</span>
+                  <span class="landmark-tier-pill">Badge #01 • 40 FT</span>
                   <span class="landmark-flip-badge">Click to Flip ↻</span>
                 </div>
                 <div class="landmark-front-bottom">
@@ -1863,8 +2010,8 @@
                   <div class="landmark-native-name">Clochán an Aifir • Northern Ireland 🇬🇧</div>
                   <p class="landmark-Front-summary">40,000 interlocking hexagonal basalt columns rising out of the North Atlantic surf.</p>
                   <div class="landmark-meta-row">
-                    <span>Unlocked at 40 FT (Trail 2)</span>
-                    <span>12 m / 40 FT</span>
+                    <span>Unlocked After Trail 2</span>
+                    <span>40 FT (12 m)</span>
                   </div>
                 </div>
               </div>
@@ -1872,7 +2019,7 @@
             <div class="landmark-face landmark-back">
               <div class="landmark-back-header">
                 <h4>Giant's Causeway (40 FT)</h4>
-                <span>Antrim Coast, Northern Ireland • First Milestone Badge</span>
+                <span>Antrim Coast, Northern Ireland • Tier I Foothill Crest</span>
               </div>
               <div class="landmark-lore-list">
                 <div class="landmark-lore-item">
@@ -1896,240 +2043,242 @@
           </div>
         </div>
 
-        <!-- Card 2: El Capitan -->
-        <div class="landmark-flip-card" tabindex="0" role="button" aria-label="Flip El Capitan landmark badge card">
+        <!-- Card 2: Staffa & Fingal's Cave (138 FT) -->
+        <div class="landmark-flip-card" tabindex="0" role="button" aria-label="Flip Staffa and Fingal's Cave landmark badge card">
           <div class="landmark-flip-inner">
             <div class="landmark-face landmark-front">
-              <img src="assets/landmarks/el_capitan.webp" alt="El Capitan Yosemite 3D Landmark Badge Artwork" loading="lazy" width="512" height="512" />
+              <img src="assets/landmarks/staffa_cave.webp" alt="Staffa and Fingal's Cave 3D Landmark Badge Artwork" loading="lazy" width="512" height="512" />
               <div class="landmark-front-overlay">
                 <div class="landmark-top-bar">
-                  <span class="landmark-tier-pill">Tier IV • Highland Pass</span>
+                  <span class="landmark-tier-pill">Badge #02 • 138 FT</span>
                   <span class="landmark-flip-badge">Click to Flip ↻</span>
                 </div>
                 <div class="landmark-front-bottom">
-                  <h4>El Capitan</h4>
-                  <div class="landmark-native-name">To-to-kon-oo-lah • Yosemite, USA 🇺🇸</div>
-                  <p class="landmark-Front-summary">The sheerest 3,000-foot vertical granite monolith on Earth, looming over Yosemite Valley.</p>
+                  <h4>Staffa &amp; Fingal's Cave</h4>
+                  <div class="landmark-native-name">An t-Eilean Stafa • Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿</div>
+                  <p class="landmark-Front-summary">Volcanic island crowned by hexagonal basalt pillars and the natural sea cathedral of Fingal's Cave.</p>
                   <div class="landmark-meta-row">
-                    <span>High Sierra Monolith</span>
-                    <span>7,573 FT Summit</span>
+                    <span>Tier I • Foothill Crest</span>
+                    <span>138 FT (42 m)</span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="landmark-face landmark-back">
               <div class="landmark-back-header">
-                <h4>El Capitan (Yosemite)</h4>
-                <span>Sierra Nevada, California • Tier IV Highland Pass</span>
+                <h4>Staffa (Fingal's Cave)</h4>
+                <span>Inner Hebrides, Scotland • Tier I Foothill Crest</span>
               </div>
               <div class="landmark-lore-list">
                 <div class="landmark-lore-item">
-                  <strong>📜 Mountaineering History</strong>
-                  <p>Revered as "To-to-kon-oo-lah" by the Ahwahneechee people; Alex Honnold achieved its historic first rope-free solo ascent in June 2017.</p>
+                  <strong>📜 Musical &amp; Mythic Lore</strong>
+                  <p>The northern end of Finn McCool's legendary basalt causeway; its booming ocean echoes inspired Felix Mendelssohn's famous "Hebrides Overture" in 1829.</p>
                 </div>
                 <div class="landmark-lore-item">
                   <strong>🌋 Geological Formation</strong>
-                  <p>Composed of coarse-grained El Capitan Granite intruded roughly 100 million years ago during the Cretaceous and sheared clean by alpine glaciers.</p>
+                  <p>Formed 58 million years ago by Paleocene Thulean lava flows cooling into dramatic geometric colonnades above echoing sea caverns.</p>
                 </div>
                 <div class="landmark-lore-item">
-                  <strong>🦅 Wildlife &amp; Features</strong>
-                  <p>Peregrine falcons nest on sheer overhanging granite ledges high above the roaring Merced River and Horsetail Fall.</p>
+                  <strong>🐧 Wildlife &amp; Features</strong>
+                  <p>Springtime sanctuary for Atlantic puffin breeding colonies nesting in grassy cliff-top burrows above the surf.</p>
                 </div>
               </div>
               <div class="landmark-back-footer">
-                <span>Unlocked via Campaign Ascent</span>
+                <span>Summit Wall Catalog #002</span>
                 <span>Click to Flip Back ↺</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Card 3: Mount Fuji -->
-        <div class="landmark-flip-card" tabindex="0" role="button" aria-label="Flip Mount Fuji landmark badge card">
+        <!-- Card 3: Haystack Rock (235 FT) -->
+        <div class="landmark-flip-card" tabindex="0" role="button" aria-label="Flip Haystack Rock landmark badge card">
           <div class="landmark-flip-inner">
             <div class="landmark-face landmark-front">
-              <img src="assets/landmarks/mount_fuji.webp" alt="Mount Fuji 3D Landmark Badge Artwork" loading="lazy" width="512" height="512" />
+              <img src="assets/landmarks/haystack_rock.webp" alt="Haystack Rock Oregon 3D Landmark Badge Artwork" loading="lazy" width="512" height="512" />
               <div class="landmark-front-overlay">
                 <div class="landmark-top-bar">
-                  <span class="landmark-tier-pill">Tier VI • Alpine Crest</span>
+                  <span class="landmark-tier-pill">Badge #03 • 235 FT</span>
                   <span class="landmark-flip-badge">Click to Flip ↻</span>
                 </div>
                 <div class="landmark-front-bottom">
-                  <h4>Mount Fuji</h4>
-                  <div class="landmark-native-name">Fuji-san (富士山) • Honshu, Japan 🇯🇵</div>
-                  <p class="landmark-Front-summary">Sacred snow-crowned volcanic cone and timeless cultural symbol rising above the Fuji Five Lakes.</p>
+                  <h4>Haystack Rock</h4>
+                  <div class="landmark-native-name">Cannon Beach Monolith • Oregon, USA 🇺🇸</div>
+                  <p class="landmark-Front-summary">Iconic 235 FT basalt sea stack towering over Pacific surf and vibrant intertidal tide pools.</p>
                   <div class="landmark-meta-row">
-                    <span>Sacred Stratovolcano</span>
-                    <span>12,389 FT (3,776 m)</span>
+                    <span>Tier I • Foothill Crest</span>
+                    <span>235 FT (72 m)</span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="landmark-face landmark-back">
               <div class="landmark-back-header">
-                <h4>Mount Fuji (Fuji-san)</h4>
-                <span>Honshu Island, Japan • Tier VI Alpine Crest</span>
+                <h4>Haystack Rock (235 FT)</h4>
+                <span>Cannon Beach, Oregon • Tier I Foothill Crest</span>
               </div>
               <div class="landmark-lore-list">
                 <div class="landmark-lore-item">
-                  <strong>📜 Cultural &amp; Artistic Lore</strong>
-                  <p>Revered as one of Japan's "Three Holy Mountains" for centuries and immortalized in Hokusai's woodblock series "Thirty-Six Views of Mount Fuji."</p>
+                  <strong>📜 Indigenous &amp; Coastal Lore</strong>
+                  <p>Sacred coastal landmark of the Tillamook nation and an enduring symbol of the Oregon coast's rugged wilderness.</p>
                 </div>
                 <div class="landmark-lore-item">
                   <strong>🌋 Geological Formation</strong>
-                  <p>A symmetrical composite stratovolcano formed across three distinct volcanic generations: Komitake, Ko-Fuji, and snow-capped Shin-Fuji.</p>
+                  <p>Extruded 15 million years ago by Miocene Columbia River basalt lava flows and sculpted into an isolated monolith by Pacific waves.</p>
                 </div>
                 <div class="landmark-lore-item">
-                  <strong>🌸 Wildlife &amp; Features</strong>
-                  <p>Ringed by the pristine Fuji Five Lakes, Aokigahara forest, and vibrant spring cherry blossom reflections.</p>
+                  <strong>🦀 Wildlife &amp; Features</strong>
+                  <p>Protected National Wildlife Refuge hosting tufted puffins, common murres, giant green anemones, and ochre sea stars.</p>
                 </div>
               </div>
               <div class="landmark-back-footer">
-                <span>Unlocked via Campaign Ascent</span>
+                <span>Summit Wall Catalog #003</span>
                 <span>Click to Flip Back ↺</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Card 4: The Matterhorn -->
-        <div class="landmark-flip-card" tabindex="0" role="button" aria-label="Flip The Matterhorn landmark badge card">
+        <!-- Card 4: White Cliffs of Dover (350 FT) -->
+        <div class="landmark-flip-card" tabindex="0" role="button" aria-label="Flip White Cliffs of Dover landmark badge card">
           <div class="landmark-flip-inner">
             <div class="landmark-face landmark-front">
-              <img src="assets/landmarks/matterhorn_base.webp" alt="The Matterhorn 3D Landmark Badge Artwork" loading="lazy" width="512" height="512" />
+              <img src="assets/landmarks/white_cliffs_of_dover.webp" alt="White Cliffs of Dover 3D Landmark Badge Artwork" loading="lazy" width="512" height="512" />
               <div class="landmark-front-overlay">
                 <div class="landmark-top-bar">
-                  <span class="landmark-tier-pill">Tier VII • 14er Benchmark</span>
+                  <span class="landmark-tier-pill">Badge #04 • 350 FT</span>
                   <span class="landmark-flip-badge">Click to Flip ↻</span>
                 </div>
                 <div class="landmark-front-bottom">
-                  <h4>The Matterhorn</h4>
-                  <div class="landmark-native-name">Monte Cervino • Switzerland / Italy 🇨🇭</div>
-                  <p class="landmark-Front-summary">The undisputed monarch of alpine pyramid horns with four sheer compass-oriented glacial faces.</p>
+                  <h4>White Cliffs of Dover</h4>
+                  <div class="landmark-native-name">Shakespeare Cliff • Kent, England 🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+                  <p class="landmark-Front-summary">Dazzling 350 FT sheer white chalk ramparts facing the English Channel, streaked with black flint.</p>
                   <div class="landmark-meta-row">
-                    <span>Pennine Alps Horn</span>
-                    <span>14,692 FT (4,478 m)</span>
+                    <span>Tier I • Foothill Crest</span>
+                    <span>350 FT (107 m)</span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="landmark-face landmark-back">
               <div class="landmark-back-header">
-                <h4>The Matterhorn</h4>
-                <span>Zermatt / Breuil-Cervinia • Alpine Pyramid Horn</span>
+                <h4>White Cliffs of Dover</h4>
+                <span>Strait of Dover, England • Tier I Foothill Crest</span>
               </div>
               <div class="landmark-lore-list">
                 <div class="landmark-lore-item">
-                  <strong>📜 Mountaineering History</strong>
-                  <p>Edward Whymper's dramatic first ascent along the Hörnli Ridge in July 1865 marked the grand finale of the Golden Age of Alpinism.</p>
+                  <strong>📜 Historical Lore</strong>
+                  <p>Immortalized in Shakespeare's "King Lear" and celebrated for centuries as Britain's gleaming natural sea rampart and beacon of home.</p>
                 </div>
                 <div class="landmark-lore-item">
-                  <strong>🌋 Geological Formation</strong>
-                  <p>A textbook glacial horn sculpted when four separate cirque glaciers eroded inward against a central African tectonic gneiss peak.</p>
+                  <strong>🌊 Geological Formation</strong>
+                  <p>Composed of pure white calcium carbonate chalk formed 90 million years ago from microscopic Cretaceous marine coccolithophores.</p>
                 </div>
                 <div class="landmark-lore-item">
-                  <strong>🐐 Wildlife &amp; Features</strong>
-                  <p>Alpine ibex, chamois, and edelweiss wildflowers thrive along the lower Zermatt meadows beneath its four towering ridges.</p>
+                  <strong>🦋 Wildlife &amp; Features</strong>
+                  <p>Chalk-hill blue butterflies, rare early spider orchids, and peregrine falcons riding updrafts above the English Channel.</p>
                 </div>
               </div>
               <div class="landmark-back-footer">
-                <span>Unlocked via Campaign Ascent</span>
+                <span>Summit Wall Catalog #004</span>
                 <span>Click to Flip Back ↺</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Card 5: K2 -->
-        <div class="landmark-flip-card" tabindex="0" role="button" aria-label="Flip K2 Savage Mountain landmark badge card">
+        <!-- Card 5: Cliffs of Moher (702 FT) -->
+        <div class="landmark-flip-card" tabindex="0" role="button" aria-label="Flip Cliffs of Moher landmark badge card">
           <div class="landmark-flip-inner">
             <div class="landmark-face landmark-front">
-              <img src="assets/landmarks/k2_savage.webp" alt="K2 Chhogori 3D Landmark Badge Artwork" loading="lazy" width="512" height="512" />
+              <img src="assets/landmarks/cliffs_of_moher.webp" alt="Cliffs of Moher 3D Landmark Badge Artwork" loading="lazy" width="512" height="512" />
               <div class="landmark-front-overlay">
                 <div class="landmark-top-bar">
-                  <span class="landmark-tier-pill">Tier XII • Crown of the World</span>
+                  <span class="landmark-tier-pill">Tier I • 702 FT</span>
                   <span class="landmark-flip-badge">Click to Flip ↻</span>
                 </div>
                 <div class="landmark-front-bottom">
-                  <h4>K2 (Chhogori)</h4>
-                  <div class="landmark-native-name">King of Mountains • Karakoram 🇵🇰</div>
-                  <p class="landmark-Front-summary">Earth's second-highest peak and the ultimate technical pyramid of granite and blue ice.</p>
+                  <h4>Cliffs of Moher</h4>
+                  <div class="landmark-native-name">Aillte an Mhothair • County Clare, Ireland 🇮🇪</div>
+                  <p class="landmark-Front-summary">Soaring 702 FT sandstone and shale sea cliffs plunging sheer into the wild Atlantic surf.</p>
                   <div class="landmark-meta-row">
-                    <span>Karakoram Eight-Thousander</span>
-                    <span>28,251 FT (8,611 m)</span>
+                    <span>Tier I • Foothill Crest</span>
+                    <span>702 FT (214 m)</span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="landmark-face landmark-back">
               <div class="landmark-back-header">
-                <h4>K2 — Chhogori</h4>
-                <span>Karakoram Range • Tier XII Crown of the World</span>
+                <h4>Cliffs of Moher (702 FT)</h4>
+                <span>County Clare, Ireland • Tier I Foothill Crest</span>
               </div>
               <div class="landmark-lore-list">
                 <div class="landmark-lore-item">
-                  <strong>📜 Mountaineering History</strong>
-                  <p>Surveyed as "K2" by the Great Trigonometrical Survey in 1856; conquered in winter for the very first time by a team of 10 Nepali mountaineers in January 2021.</p>
+                  <strong>📜 Historical Lore</strong>
+                  <p>Named after the ancient promontory fort "Mothar" and crowned by O'Brien's Tower, built in 1835 on the highest cliff headland.</p>
                 </div>
                 <div class="landmark-lore-item">
-                  <strong>🌋 Geological Formation</strong>
-                  <p>A sheer crystalline pyramid of metamorphic gneiss and granite soaring over 10,000 vertical feet above the Godwin-Austen Glacier.</p>
+                  <strong>🪨 Geological Formation</strong>
+                  <p>320-million-year-old Carboniferous Namurian shale and sandstone strata laid down at the mouth of an ancient prehistoric river delta.</p>
                 </div>
                 <div class="landmark-lore-item">
-                  <strong>❄️ Signature Feature</strong>
-                  <p>Home to the legendary Abruzzi Spur and the House's Chimney high in the jet-stream Death Zone.</p>
+                  <strong>🐧 Wildlife &amp; Features</strong>
+                  <p>Home to over 30,000 nesting seabird pairs including Atlantic puffins, razorbills, guillemots, and kittiwakes.</p>
                 </div>
               </div>
               <div class="landmark-back-footer">
-                <span>Summit Wall Tier XII Crest</span>
+                <span>Tier I Foothill Milestone</span>
                 <span>Click to Flip Back ↺</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Card 6: Mount Everest -->
-        <div class="landmark-flip-card" tabindex="0" role="button" aria-label="Flip Mount Everest landmark badge card">
+        <!-- Card 6: Classified High-Altitude Summit Vault (Spoiler-Free Mystery Card) -->
+        <div class="landmark-flip-card" tabindex="0" role="button" aria-label="Flip Classified High-Altitude Summit Vault card">
           <div class="landmark-flip-inner">
-            <div class="landmark-face landmark-front">
-              <img src="assets/landmarks/mount_everest.webp" alt="Mount Everest Sagarmatha 3D Landmark Badge Artwork" loading="lazy" width="512" height="512" />
+            <div class="landmark-face landmark-front mystery-vault-front">
               <div class="landmark-front-overlay">
                 <div class="landmark-top-bar">
-                  <span class="landmark-tier-pill">Tier XII • Ultimate Summit</span>
-                  <span class="landmark-flip-badge">Click to Flip ↻</span>
+                  <span class="landmark-tier-pill">Tiers II–XII • Classified</span>
+                  <span class="landmark-flip-badge">Click to Peek ↻</span>
                 </div>
+                <div class="mystery-vault-crest" aria-hidden="true">🔒</div>
                 <div class="landmark-front-bottom">
-                  <h4>Mount Everest</h4>
-                  <div class="landmark-native-name">Sagarmatha / Chomolungma • Himalayas 🇳🇵</div>
-                  <p class="landmark-Front-summary">The highest point on planet Earth—crowned by its roaring jet-stream snow plume.</p>
+                  <h4>107 Secret Summits Await</h4>
+                  <div class="landmark-native-name">No Spoilers • Unlock In-Game From 1,000 FT → 29,032 FT</div>
+                  <p class="landmark-Front-summary">
+                    From sacred volcanic cones and sheer granite monoliths to the 29,032 FT Crown of the World—climb the trails to reveal every mystery badge yourself!
+                  </p>
                   <div class="landmark-meta-row">
-                    <span>#112 Ultimate Crown Badge</span>
-                    <span>29,032 FT (8,849 m)</span>
+                    <span>112 Total Badges + Streak Crests</span>
+                    <span>Up to 29,032 FT</span>
                   </div>
                 </div>
               </div>
             </div>
             <div class="landmark-face landmark-back">
               <div class="landmark-back-header">
-                <h4>Mount Everest (29,032 FT)</h4>
-                <span>Mahalangur Himal, Nepal / Tibet • Badge #112</span>
+                <h4>12-Tier Expedition Vault</h4>
+                <span>Ascend to Unlock All 112 Real-World Crests</span>
               </div>
               <div class="landmark-lore-list">
                 <div class="landmark-lore-item">
-                  <strong>📜 Historic First Ascent</strong>
-                  <p>Known as Sagarmatha ("Goddess of the Sky") and Chomolungma; first summited on May 29, 1953 by Sir Edmund Hillary and Tenzing Norgay Sherpa.</p>
+                  <strong>🌲 Tiers I–IV (Foothills to Highland Pass)</strong>
+                  <p>Coastal sea stacks, canyon monoliths, and forested ridges from 40 FT to 7,500 FT across 4×4, 5×5, and 6×6 trail grids.</p>
                 </div>
                 <div class="landmark-lore-item">
-                  <strong>🌊 Ancient Ocean Fossils at the Summit</strong>
-                  <p>Its summit Qomolangma limestone was once on the floor of the ancient Tethys Sea over 400 million years ago and still holds fossilized crinoids!</p>
+                  <strong>⛰️ Tiers V–VIII (Timberline to Continental Summit)</strong>
+                  <p>Sacred volcanoes, iconic alpine horns, and 14,000+ FT Rocky Mountain benchmarks across 7×7 and 8×8 grids.</p>
                 </div>
                 <div class="landmark-lore-item">
-                  <strong>🏔️ Signature Feature</strong>
-                  <p>The iconic jet-stream snow banner streams from the summit pyramid above the Khumbu Icefall and colorful prayer flags.</p>
+                  <strong>👑 Tiers IX–XII (Glacier Star to Crown of the World)</strong>
+                  <p>Sub-arctic ice domes, Andean colossi, and the legendary 8,000-meter Himalayan Eight-Thousanders up to 29,032 FT!</p>
                 </div>
               </div>
               <div class="landmark-back-footer">
-                <span>Summit Wall #112 • Roof of the World</span>
+                <span>Zero Spoilers • Earned by Pure Logic</span>
                 <span>Click to Flip Back ↺</span>
               </div>
             </div>
@@ -2172,86 +2321,138 @@
       </div>
     </section>
 
-    <!-- Press & Media Kit Section (#press) -->
+    <!-- Upgraded Press & Media Kit Section (#press) -->
     <section id="press" class="press-section cv-auto-section">
       <div class="section-header">
         <span class="section-tag">For Journalists, Creators &amp; Store Editorial</span>
         <h2 class="section-title">Press &amp; Media Kit</h2>
         <p class="section-subtitle">
-          Everything reviewers, puzzle streamers, and editorial teams need to cover <em>Summit Rangers: Tactical Trail Expedition</em>.
+          High-resolution key art, fact sheet, story angles, and downloadable brand assets for covering <em>Summit Rangers: Tactical Trail Expedition</em>.
         </p>
+      </div>
+
+      <!-- Full-Width Crisp 2:1 Key Art Showcase Banner -->
+      <div class="press-hero-banner-card">
+        <div class="press-banner-top-row">
+          <h3>Official Key Art &amp; Gameplay Overview Banner</h3>
+          <span>Retina 2048 × 1000 px (2:1 Aspect Ratio) • Zero-Distortion Press Master</span>
+        </div>
+        <img
+          src="assets/feature-graphic-1024x500.png"
+          alt="Summit Rangers: Tactical Trail Expedition Official Key Art Banner showing 10 Woodland Rangers, live 4x4 Tactical Trail Board, and Foothill Landmark Badges"
+          class="press-feature-banner"
+          loading="lazy"
+          width="2048"
+          height="1000"
+        />
       </div>
 
       <div class="press-grid">
         <div class="press-card">
-          <h3>Official Fact Sheet</h3>
-          <dl class="fact-sheet-list">
-            <div class="fact-row">
-              <dt>Title</dt>
-              <dd>Summit Rangers: Tactical Trail Expedition</dd>
-            </div>
-            <div class="fact-row">
-              <dt>Developer</dt>
-              <dd>Paper Wing Games LLC (Independent Studio)</dd>
-            </div>
-            <div class="fact-row">
-              <dt>Platforms</dt>
-              <dd>iOS (iPhone &amp; iPad) and Android</dd>
-            </div>
-            <div class="fact-row">
-              <dt>Genre</dt>
-              <dd>Tactical Trail Logic &amp; Grid Deduction Puzzle</dd>
-            </div>
-            <div class="fact-row">
-              <dt>Content Scope</dt>
-              <dd>1,070+ Campaign Trails, 365 Daily Peaks, Timed Arena, 112 3D Landmark Badges, 10 Rangers</dd>
-            </div>
-            <div class="fact-row">
-              <dt>Price Model</dt>
-              <dd>Free to Play (Optional $5.99 Explorer Pass)</dd>
-            </div>
-            <div class="fact-row">
-              <dt>Offline Play</dt>
-              <dd>100% Offline Playable (Zero Wi-Fi Required)</dd>
-            </div>
-            <div class="fact-row">
-              <dt>Press Contact</dt>
-              <dd><a href="mailto:support@paperwinggames.com" style="color: var(--sky-bright); text-decoration: none;">support@paperwinggames.com</a></dd>
-            </div>
-          </dl>
+          <div>
+            <h3>Official Fact Sheet</h3>
+            <dl class="fact-sheet-list">
+              <div class="fact-row">
+                <dt>Title</dt>
+                <dd>Summit Rangers: Tactical Trail Expedition</dd>
+              </div>
+              <div class="fact-row">
+                <dt>Developer</dt>
+                <dd>Paper Wing Games LLC (Independent Studio)</dd>
+              </div>
+              <div class="fact-row">
+                <dt>Platforms</dt>
+                <dd>iOS (iPhone &amp; iPad) and Android</dd>
+              </div>
+              <div class="fact-row">
+                <dt>Genre</dt>
+                <dd>Tactical Trail Logic &amp; Grid Deduction Puzzle</dd>
+              </div>
+              <div class="fact-row">
+                <dt>Core Rules</dt>
+                <dd>Station 1 Ranger per Row (Trail), Column (Pass) &amp; Color Sector; no two Rangers may touch, even diagonally</dd>
+              </div>
+              <div class="fact-row">
+                <dt>Campaign &amp; Modes</dt>
+                <dd>1,070+ Campaign Trails (12 Tiers), 365 Daily Peaks, Timed Trail Blitz &amp; 3-Stage Triple Peak Relay</dd>
+              </div>
+              <div class="fact-row">
+                <dt>Collectibles</dt>
+                <dd>112 3D World Landmark Badges + 10 Woodland Rangers + Custom Wilderness Ranger Permit</dd>
+              </div>
+              <div class="fact-row">
+                <dt>Price &amp; Offline</dt>
+                <dd>Free to Play (Optional $5.99 Explorer Pass) • 100% Offline Ready</dd>
+              </div>
+              <div class="fact-row">
+                <dt>Press Contact</dt>
+                <dd><a href="mailto:support@paperwinggames.com" style="color: var(--sky-bright); text-decoration: none;">support@paperwinggames.com</a></dd>
+              </div>
+            </dl>
+          </div>
         </div>
 
         <div class="press-card">
-          <h3>Brand Assets &amp; Logline</h3>
-          <img
-            src="assets/feature-graphic-1024x500.png"
-            alt="Summit Rangers: Tactical Trail Expedition 1024x500 Feature Banner"
-            class="press-feature-banner"
-            loading="lazy"
-            width="1024"
-            height="500"
-          />
-          <div class="press-boilerplate-box">
-            <strong>One-Sentence Logline:</strong><br />
-            <em>"Summit Rangers: Tactical Trail Expedition is a cozy yet deeply tactical national-park logic puzzle game where players station 10 expressive woodland rangers across 1,070+ zero-guesswork mountain grids, race the clock in Daily Relays, and unlock 112 real-world 3D Summit Badges from Giant's Causeway to Mount Everest."</em>
+          <div>
+            <h3>Editorial Story Angles &amp; Logline</h3>
+            <div class="press-boilerplate-box">
+              <strong>Copy-Ready Press Logline:</strong><br />
+              <span id="pressBoilerplateText">"Summit Rangers: Tactical Trail Expedition is a cozy yet deeply tactical national-park logic puzzle game from Paper Wing Games LLC where players station 10 expressive woodland rangers across 1,070+ zero-guesswork mountain grids, learn real deduction patterns via pedagogical spotlight hints, race the clock in 3-Peak Relays, and climb from 40 FT coastal sea cliffs to 29,032 FT Himalayan summits."</span>
+              <div>
+                <button type="button" class="press-copy-btn" id="copyPressTextBtn">📋 Copy Press Logline</button>
+              </div>
+            </div>
+
+            <ul class="press-angles-list">
+              <li><strong>🧭 Zero-Guesswork Guarantee:</strong> Every board from 4×4 warmups to 10×10 Alpine Crown grids is verified by a deterministic deduction solver—never requiring a blind 50/50 guess.</li>
+              <li><strong>💡 Hints That Teach, Not Spoil:</strong> The interactive Spotlight Field Guide highlights the exact Trail, Pass, or Sector deduction rule and even catches mistaken "X" marks.</li>
+              <li><strong>🏔️ Real-World Altimeter Progression:</strong> Instead of abstract XP, players earn vertical Elevation Feet (+FT) to unlock 112 3D flip-card badges with authentic geology, wildlife &amp; indigenous lore.</li>
+            </ul>
           </div>
-          <div class="press-downloads-grid">
-            <a class="press-dl-link" href="assets/summit-rangers-icon.png" download>
-              <span>App Icon (PNG)</span>
-              <span>↓</span>
-            </a>
-            <a class="press-dl-link" href="assets/feature-graphic-1024x500.png" download>
-              <span>Feature Banner (1024×500)</span>
-              <span>↓</span>
-            </a>
-            <a class="press-dl-link" href="assets/barnaby-celebrate.png" download>
-              <span>3D Barnaby Render (PNG)</span>
-              <span>↓</span>
-            </a>
-            <a class="press-dl-link" href="assets/paper-wing-logo.png" download>
-              <span>Studio Crest Logo (PNG)</span>
-              <span>↓</span>
-            </a>
+
+          <div>
+            <h3 style="font-size: 1.05rem; margin-bottom: 10px;">High-Res Brand &amp; Character Assets</h3>
+            <div class="press-asset-visual-grid">
+              <a class="press-asset-tile" href="assets/feature-graphic-1024x500.png" download>
+                <div class="press-asset-thumb">
+                  <img src="assets/feature-graphic-1024x500.png" alt="Key Art Banner Thumbnail" loading="lazy" />
+                </div>
+                <div class="press-asset-meta">
+                  <strong>Key Art Banner ↓</strong>
+                  <small>2048×1000 Retina PNG</small>
+                </div>
+              </a>
+
+              <a class="press-asset-tile" href="assets/summit-rangers-icon.png" download>
+                <div class="press-asset-thumb">
+                  <img src="assets/summit-rangers-icon.png" alt="App Icon Thumbnail" loading="lazy" />
+                </div>
+                <div class="press-asset-meta">
+                  <strong>App Store Icon ↓</strong>
+                  <small>1024×1024 High-Res PNG</small>
+                </div>
+              </a>
+
+              <a class="press-asset-tile" href="assets/barnaby-celebrate.png" download>
+                <div class="press-asset-thumb">
+                  <img src="assets/barnaby-celebrate.png" alt="3D Barnaby Victory Render Thumbnail" loading="lazy" />
+                </div>
+                <div class="press-asset-meta">
+                  <strong>3D Barnaby (Victory) ↓</strong>
+                  <small>Transparent Alpha PNG</small>
+                </div>
+              </a>
+
+              <a class="press-asset-tile" href="assets/paper-wing-logo.png" download>
+                <div class="press-asset-thumb">
+                  <img src="assets/paper-wing-logo.png" alt="Paper Wing Games Crest Thumbnail" loading="lazy" />
+                </div>
+                <div class="press-asset-meta">
+                  <strong>Studio Crest Logo ↓</strong>
+                  <small>760×655 Official Emblem</small>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -2276,7 +2477,7 @@
       <div class="footer-links">
         <a href="index.html">Home</a>
         <a href="#screenshots">Screenshots</a>
-        <a href="#landmarks">Landmarks</a>
+        <a href="#landmarks">Summit Badges</a>
         <a href="#press">Press Kit</a>
         <a href="privacy.html">Privacy Policy</a>
         <a href="terms.html">Terms of Service</a>
@@ -2350,6 +2551,21 @@
         }
       });
     });
+
+    // 4. Copy Press Logline Button
+    const copyBtn = document.getElementById('copyPressTextBtn');
+    const pressText = document.getElementById('pressBoilerplateText');
+    if (copyBtn && pressText && navigator.clipboard) {
+      copyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(pressText.textContent.trim());
+          copyBtn.textContent = '✓ Copied to Clipboard!';
+          setTimeout(() => {
+            copyBtn.textContent = '📋 Copy Press Logline';
+          }, 2200);
+        } catch (_) {}
+      });
+    }
   </script>
 </body>
 </html>
