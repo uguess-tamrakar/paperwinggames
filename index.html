@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Paper Wing Games — Home of Summit Rangers: Tactical Trail Expedition</title>
   <meta name="description" content="Paper Wing Games LLC is an independent game studio crafting visually stunning, tactical brain and logic puzzle games, home of Summit Rangers: Tactical Trail Expedition." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://paperwinggames.com/" />
+  <meta property="og:title" content="Summit Rangers: Tactical Trail Expedition — Paper Wing Games" />
+  <meta property="og:description" content="Outsmart the mountain trail with 100% pure tactical deduction! Join Captain Barnaby &amp; 10 Woodland Rangers across 12 Alpine Tiers, 365 Daily Peaks, and 115 Real-World Summit Crests." />
+  <meta property="og:image" content="https://paperwinggames.com/assets/feature-graphic-1024x500.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Summit Rangers: Tactical Trail Expedition — Paper Wing Games" />
+  <meta name="twitter:description" content="100% pure-deduction mountain trail logic puzzles. Climb 12 Alpine Tiers, race in 3-Peak Relays, and assemble 115 real-world Summit Crests." />
+  <meta name="twitter:image" content="https://paperwinggames.com/assets/feature-graphic-1024x500.png" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1574,6 +1583,148 @@
         padding: 28px 24px;
       }
     }
+
+    /* 3D Ranger Passport Roster & Spoiler-Free Tier Emblems Showcase */
+    .rangers-and-emblems-showcase {
+      margin-top: 38px;
+      padding-top: 34px;
+      border-top: 1px solid rgba(253, 230, 138, 0.16);
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 24px;
+    }
+
+    .showcase-panel {
+      background: rgba(9, 25, 19, 0.78);
+      border: 1px solid rgba(253, 230, 138, 0.24);
+      border-radius: 22px;
+      padding: 22px 24px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.38);
+    }
+
+    .showcase-panel h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--gold-summit);
+      margin-bottom: 4px;
+    }
+
+    .showcase-panel p {
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+
+    .rangers-roster-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .ranger-avatar-card {
+      background: rgba(15, 39, 30, 0.88);
+      border: 1px solid rgba(110, 231, 183, 0.28);
+      border-radius: 14px;
+      padding: 8px 6px;
+      text-align: center;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .ranger-avatar-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold-summit);
+    }
+
+    .ranger-avatar-circle {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 6px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(253, 230, 138, 0.78);
+      background: radial-gradient(circle at 50% 35%, rgba(52, 211, 153, 0.35), rgba(7, 21, 16, 0.95));
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45);
+    }
+
+    .ranger-avatar-circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .ranger-avatar-card strong {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .ranger-avatar-card span {
+      display: block;
+      font-size: 0.68rem;
+      color: #86efac;
+    }
+
+    .tier-emblems-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .tier-emblem-card {
+      background: rgba(15, 39, 30, 0.88);
+      border: 1px solid rgba(253, 230, 138, 0.25);
+      border-radius: 14px;
+      padding: 10px 6px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tier-emblem-card.mystery {
+      border-style: dashed;
+      border-color: rgba(253, 230, 138, 0.45);
+      background: rgba(8, 20, 16, 0.92);
+    }
+
+    .tier-emblem-card img {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+      margin-bottom: 6px;
+      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.5));
+    }
+
+    .tier-emblem-card strong {
+      font-size: 0.76rem;
+      color: var(--gold-summit);
+      line-height: 1.2;
+    }
+
+    .tier-emblem-card span {
+      font-size: 0.67rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    @media (max-width: 980px) {
+      .rangers-and-emblems-showcase {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .rangers-roster-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .tier-emblems-preview-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
   </style>
 </head>
 <body>
@@ -1655,7 +1806,7 @@
             </div>
 
             <p class="summit-description">
-              Join <strong>Ranger Captain Barnaby</strong> and 10 Woodland Rangers on a handcrafted vertical expedition from sun-dappled Emerald Foothills to the 29,032 FT snow-swept Crown of the World. Station rangers across 1,070+ mountain trail grids, race the clock in Trail Blitz &amp; Triple Peak Relay, and unlock 112 real-world mountain badges—with zero guesswork required.
+              Join <strong>Ranger Captain Barnaby</strong> and 10 Woodland Rangers on a handcrafted vertical expedition from sun-dappled Emerald Foothills to the 29,032 FT snow-swept Crown of the World. Station rangers across handcrafted mountain trail grids, race the clock in Trail Blitz &amp; Triple Peak Relay, and assemble 115 real-world Summit Crests—with zero guesswork required.
             </p>
 
             <div class="summit-feature-pills">
@@ -1677,7 +1828,7 @@
                 <div class="feature-mini-icon">🏔️</div>
                 <div>
                   <h4>12 Alpine Realms</h4>
-                  <p>Ascend 1,070+ campaign trails and 365 Daily Peak Expeditions with custom soundscapes.</p>
+                  <p>Ascend handcrafted campaign trails and 365 Daily Peak Expeditions with custom soundscapes.</p>
                 </div>
               </div>
               <div class="feature-mini-card">
@@ -1685,31 +1836,31 @@
                   <img src="assets/golden-pinecone.png" alt="Golden Pinecone" loading="lazy" width="20" height="25" />
                 </div>
                 <div>
-                  <h4>112 World Summit Badges</h4>
-                  <p>Earn elevation feet to unlock 3D flip cards starting from Giant's Causeway (40 FT) upward!</p>
+                  <h4>115 World Summit Crests</h4>
+                  <p>Collect Summit Shards in your Summit Bag &amp; unlock 3D flip cards starting from Giant's Causeway (40 FT) upward!</p>
                 </div>
               </div>
             </div>
 
             <div class="store-badges">
-              <div class="store-badge">
+              <a class="store-badge" href="https://apps.apple.com/search?term=Summit%20Rangers" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.33c.64-.78 1.08-1.86.96-2.94-.93.04-2.06.62-2.72 1.4-.58.68-1.1 1.79-.96 2.84 1.04.08 2.08-.52 2.72-1.3z"/>
                 </svg>
                 <div class="store-badge-label">
-                  <small>Coming Soon to</small>
+                  <small>Download on the</small>
                   <span>Apple App Store</span>
                 </div>
-              </div>
-              <div class="store-badge">
+              </a>
+              <a class="store-badge" href="https://play.google.com/store/apps/details?id=com.paperwinggames.summitrangers" target="_blank" rel="noopener" style="text-decoration: none; color: inherit;">
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M3 20.5v-17c0-.83.94-1.3 1.6-.8l14 8.5c.6.37.6 1.23 0 1.6l-14 8.5c-.66.5-1.6.03-1.6-.8z"/>
                 </svg>
                 <div class="store-badge-label">
-                  <small>Coming Soon to</small>
+                  <small>Get it on</small>
                   <span>Google Play</span>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
 
@@ -1748,6 +1899,93 @@
             <div class="barnaby-caption">
               <strong>Ranger Captain Barnaby</strong>
               <span id="barnabyHeroCaption">Celebrating a Flawless Trail Ascent • Bear-Paw Pennant &amp; Summit Shield</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 10 3D Woodland Ranger Passport Roster & Spoiler-Free Early Tier Emblems Preview -->
+        <div class="rangers-and-emblems-showcase">
+          <div class="showcase-panel">
+            <h3>Meet the 10 Woodland Rangers</h3>
+            <p>Select any Ranger on your official Wilderness Ranger Permit to lead your Expedition Hub, Victory celebrations, and Blunder reactions.</p>
+            <div class="rangers-roster-grid">
+              <div class="ranger-avatar-card">
+                <div class="ranger-avatar-circle"><img src="assets/ranger_0_barnaby.webp" alt="Barnaby the Ranger Bear 3D Portrait" loading="lazy" width="120" height="120" /></div>
+                <strong>Barnaby</strong>
+                <span>Ranger Bear</span>
+              </div>
+              <div class="ranger-avatar-card">
+                <div class="ranger-avatar-circle"><img src="assets/ranger_1_pip.webp" alt="Pip the Trail Chipmunk 3D Portrait" loading="lazy" width="120" height="120" /></div>
+                <strong>Pip</strong>
+                <span>Trail Chipmunk</span>
+              </div>
+              <div class="ranger-avatar-card">
+                <div class="ranger-avatar-circle"><img src="assets/ranger_2_gideon.webp" alt="Gideon the Mountain Goat 3D Portrait" loading="lazy" width="120" height="120" /></div>
+                <strong>Gideon</strong>
+                <span>Mountain Goat</span>
+              </div>
+              <div class="ranger-avatar-card">
+                <div class="ranger-avatar-circle"><img src="assets/ranger_3_rowan.webp" alt="Rowan the Red Fox 3D Portrait" loading="lazy" width="120" height="120" /></div>
+                <strong>Rowan</strong>
+                <span>Red Fox</span>
+              </div>
+              <div class="ranger-avatar-card">
+                <div class="ranger-avatar-circle"><img src="assets/ranger_4_milo.webp" alt="Milo the Alpine Marmot 3D Portrait" loading="lazy" width="120" height="120" /></div>
+                <strong>Milo</strong>
+                <span>Alpine Marmot</span>
+              </div>
+              <div class="ranger-avatar-card">
+                <div class="ranger-avatar-circle"><img src="assets/ranger_5_sora.webp" alt="Sora the Peregrine Falcon 3D Portrait" loading="lazy" width="120" height="120" /></div>
+                <strong>Sora</strong>
+                <span>Peregrine Falcon</span>
+              </div>
+              <div class="ranger-avatar-card">
+                <div class="ranger-avatar-circle"><img src="assets/ranger_6_jasper.webp" alt="Jasper the Timber Wolf 3D Portrait" loading="lazy" width="120" height="120" /></div>
+                <strong>Jasper</strong>
+                <span>Timber Wolf</span>
+              </div>
+              <div class="ranger-avatar-card">
+                <div class="ranger-avatar-circle"><img src="assets/ranger_7_bramble.webp" alt="Bramble the Pine Porcupine 3D Portrait" loading="lazy" width="120" height="120" /></div>
+                <strong>Bramble</strong>
+                <span>Pine Porcupine</span>
+              </div>
+              <div class="ranger-avatar-card">
+                <div class="ranger-avatar-circle"><img src="assets/ranger_8_luna.webp" alt="Luna the Snowy Owl 3D Portrait" loading="lazy" width="120" height="120" /></div>
+                <strong>Luna</strong>
+                <span>Snowy Owl</span>
+              </div>
+              <div class="ranger-avatar-card">
+                <div class="ranger-avatar-circle"><img src="assets/ranger_9_otto.webp" alt="Otto the River Otter 3D Portrait" loading="lazy" width="120" height="120" /></div>
+                <strong>Otto</strong>
+                <span>River Otter</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="showcase-panel">
+            <h3>3D Elevation Tier Emblems (Spoiler-Free Peek)</h3>
+            <p>Each of the 12 Elevation Tiers awards a custom 3D heraldic shield emblem. Here are the first 3 early emblems—higher-altitude shields stay classified until you conquer them!</p>
+            <div class="tier-emblems-preview-grid">
+              <div class="tier-emblem-card">
+                <img src="assets/tier_emblem_1.png" alt="Tier I Foothill Crest 3D Shield Emblem" loading="lazy" width="140" height="140" />
+                <strong>Tier I</strong>
+                <span>Foothill Crest</span>
+              </div>
+              <div class="tier-emblem-card">
+                <img src="assets/tier_emblem_2.png" alt="Tier II Valley Ridge 3D Shield Emblem" loading="lazy" width="140" height="140" />
+                <strong>Tier II</strong>
+                <span>Valley Ridge</span>
+              </div>
+              <div class="tier-emblem-card">
+                <img src="assets/tier_emblem_3.png" alt="Tier III Basecamp Pin 3D Shield Emblem" loading="lazy" width="140" height="140" />
+                <strong>Tier III</strong>
+                <span>Basecamp Pin</span>
+              </div>
+              <div class="tier-emblem-card mystery">
+                <img src="assets/tier_emblem_mystery.png" alt="Classified High-Altitude Tier Emblem Silhouette" loading="lazy" width="140" height="140" />
+                <strong>Tiers IV–XII</strong>
+                <span>9 Secret Shields 🔒</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1896,7 +2134,7 @@
           <div class="screenshot-card-meta">
             <span class="screenshot-step">Slide 03 • Expedition Hub</span>
             <h4>Climb 12 Alpine Realms</h4>
-            <p>1,070+ campaign trails from Emerald Foothills to the 29,032 FT Crown.</p>
+            <p>Handcrafted campaign trails from Emerald Foothills to the 29,032 FT Crown.</p>
           </div>
         </button>
 
@@ -1918,21 +2156,21 @@
           </div>
         </button>
 
-        <button type="button" class="screenshot-card" data-src="assets/screenshots/06_real_world_mountain_badges.png" data-title="6. Collect 112 Real-World Mountain Badges">
+        <button type="button" class="screenshot-card" data-src="assets/screenshots/06_real_world_mountain_badges.png" data-title="6. Collect 115 Real-World Summit Crests">
           <img src="assets/screenshots/06_real_world_mountain_badges.png" alt="Haystack Rock 235 FT 3D badge reveal screen" loading="lazy" width="720" height="1280" />
           <div class="screenshot-card-meta">
-            <span class="screenshot-step">Slide 06 • 112 Landmarks</span>
+            <span class="screenshot-step">Slide 06 • 115 Summits</span>
             <h4>Collect Iconic World Summits</h4>
-            <p>Unlock 3D enamel-and-gold crests with authentic geology &amp; lore.</p>
+            <p>Assemble Jigsaw Shards &amp; unlock 3D crests with authentic geology &amp; lore.</p>
           </div>
         </button>
 
-        <button type="button" class="screenshot-card" data-src="assets/screenshots/07_flawless_victory_barnaby.png" data-title="7. Celebrate Every Flawless Ascent with 3D Barnaby">
+        <button type="button" class="screenshot-card" data-src="assets/screenshots/07_flawless_victory_barnaby.png" data-title="7. Celebrate Every Flawless Ascent with 3D Rangers">
           <img src="assets/screenshots/07_flawless_victory_barnaby.png" alt="Flawless Ascent victory screen featuring 3D Captain Barnaby" loading="lazy" width="720" height="1280" />
           <div class="screenshot-card-meta">
             <span class="screenshot-step">Slide 07 • Flawless Victory</span>
             <h4>Celebrate Every Ascent</h4>
-            <p>Earn 3 Expedition Shields, bonus elevation feet &amp; shareable postcards.</p>
+            <p>Earn 2 Expedition Shields, bonus elevation feet &amp; shareable victory screenshots.</p>
           </div>
         </button>
 
@@ -1941,7 +2179,7 @@
           <div class="screenshot-card-meta">
             <span class="screenshot-step">Slide 08 • Ranger Identity</span>
             <h4>Forge Your Ranger Legacy</h4>
-            <p>Choose your Lead Ranger and showcase 112 crests on the Summit Wall.</p>
+            <p>Choose your 3D Lead Ranger and showcase 115 crests on the Summit Wall.</p>
           </div>
         </button>
       </div>
@@ -1963,10 +2201,10 @@
     <!-- Non-Spoiler Early-Tier Landmark Cards + Classified High-Altitude Vault Section -->
     <section id="landmarks" class="landmarks-section cv-auto-section">
       <div class="section-header">
-        <span class="section-tag">112 Authentic Summits &amp; Geological Wonders</span>
-        <h2 class="section-title">Start in the Foothills. Unlock 112 Secret Peaks.</h2>
+        <span class="section-tag">115 Authentic Summits &amp; Geological Wonders</span>
+        <h2 class="section-title">Start in the Foothills. Unlock 115 Secret Peaks.</h2>
         <p class="section-subtitle">
-          Every solved trail rewards Elevation Feet (+FT) based on grid complexity, speed, and flawless accuracy. Here is a peek at the <strong>first 5 Foothill Crest badges</strong> you earn in your opening trails—while the highest world summits remain locked in the expedition vault until you climb there yourself! Click any card to flip it in 3D.
+          Every solved trail rewards Elevation Feet (+FT) and Summit Shards for your Summit Bag. Here is a peek at the <strong>first 5 Foothill Crest badges</strong> you earn in your opening trails—while the highest world summits remain locked in the expedition vault until you climb there yourself! Click any card to flip it in 3D.
         </p>
       </div>
 
@@ -1975,20 +2213,20 @@
           <div class="explainer-badge-num">1</div>
           <div>
             <h4>Climb Trails &amp; Gain Feet</h4>
-            <p>Every campaign trail, Daily Peak, and Timed Sprint adds vertical feet (+FT) to your lifetime altimeter—boosted by flawless 3-shield clears.</p>
+            <p>Every campaign trail, Daily Peak, and Timed Sprint adds vertical feet (+FT) to your lifetime altimeter—boosted by flawless 2-shield clears.</p>
           </div>
         </div>
         <div class="explainer-step">
           <div class="explainer-badge-num">2</div>
           <div>
-            <h4>Earn Early Foothill Crests</h4>
-            <p>Unlock your first crest at <strong>40 FT (Giant's Causeway)</strong> right after Trail 2, followed by coastal monoliths and sea cliffs across Tier I.</p>
+            <h4>Assemble Summit Bag Shards</h4>
+            <p>Unlock your first crest at <strong>40 FT (Giant's Causeway)</strong> right after Trail 2, then piece together randomized jigsaw shards in your Summit Bag.</p>
           </div>
         </div>
         <div class="explainer-step">
           <div class="explainer-badge-num">3</div>
           <div>
-            <h4>Uncover 100+ Classified Summits</h4>
+            <h4>Uncover 110+ Classified Summits</h4>
             <p>Flip every unlocked badge 180° for indigenous lore and geology—and ascend all 12 tiers to reveal which legendary peaks await at 29,032 FT!</p>
           </div>
         </div>
@@ -2246,13 +2484,13 @@
                 </div>
                 <div class="mystery-vault-crest" aria-hidden="true">🔒</div>
                 <div class="landmark-front-bottom">
-                  <h4>107 Secret Summits Await</h4>
+                  <h4>110 Secret Summits Await</h4>
                   <div class="landmark-native-name">No Spoilers • Unlock In-Game From 1,000 FT → 29,032 FT</div>
                   <p class="landmark-Front-summary">
                     From sacred volcanic cones and sheer granite monoliths to the 29,032 FT Crown of the World—climb the trails to reveal every mystery badge yourself!
                   </p>
                   <div class="landmark-meta-row">
-                    <span>112 Total Badges + Streak Crests</span>
+                    <span>115 Total Summits + 2 Streak Crests</span>
                     <span>Up to 29,032 FT</span>
                   </div>
                 </div>
@@ -2261,7 +2499,7 @@
             <div class="landmark-face landmark-back">
               <div class="landmark-back-header">
                 <h4>12-Tier Expedition Vault</h4>
-                <span>Ascend to Unlock All 112 Real-World Crests</span>
+                <span>Ascend to Unlock All 115 Real-World Crests</span>
               </div>
               <div class="landmark-lore-list">
                 <div class="landmark-lore-item">
@@ -2374,15 +2612,15 @@
               </div>
               <div class="fact-row">
                 <dt>Campaign &amp; Modes</dt>
-                <dd>1,070+ Campaign Trails (12 Tiers), 365 Daily Peaks, Timed Trail Blitz &amp; 3-Stage Triple Peak Relay</dd>
+                <dd>Handcrafted Campaign Trails (12 Tiers), 365 Daily Peaks, Timed Trail Blitz &amp; 3-Stage Triple Peak Relay</dd>
               </div>
               <div class="fact-row">
                 <dt>Collectibles</dt>
-                <dd>112 3D World Landmark Badges + 10 Woodland Rangers + Custom Wilderness Ranger Permit</dd>
+                <dd>115 3D World Summit Crests (+ 2 Streak Crests) + Summit Bag Jigsaw Shards + 10 3D Woodland Rangers</dd>
               </div>
               <div class="fact-row">
                 <dt>Price &amp; Offline</dt>
-                <dd>Free to Play (Optional $5.99 Explorer Pass) • 100% Offline Ready</dd>
+                <dd>Free to Play (Optional $6.99 Explorer Pass, $3.99 Supply Pass, $2.99 Tool Kit &amp; $0.99 Pinecone Cache) • 100% Offline Ready</dd>
               </div>
               <div class="fact-row">
                 <dt>Press Contact</dt>
@@ -2397,7 +2635,7 @@
             <h3>Editorial Story Angles &amp; Logline</h3>
             <div class="press-boilerplate-box">
               <strong>Copy-Ready Press Logline:</strong><br />
-              <span id="pressBoilerplateText">"Summit Rangers: Tactical Trail Expedition is a cozy yet deeply tactical national-park logic puzzle game from Paper Wing Games LLC where players station 10 expressive woodland rangers across 1,070+ zero-guesswork mountain grids, learn real deduction patterns via pedagogical spotlight hints, race the clock in 3-Peak Relays, and climb from 40 FT coastal sea cliffs to 29,032 FT Himalayan summits."</span>
+              <span id="pressBoilerplateText">"Summit Rangers: Tactical Trail Expedition is a cozy yet deeply tactical national-park logic puzzle game from Paper Wing Games LLC where players station 10 expressive woodland rangers across zero-guesswork mountain grids, learn real deduction patterns via pedagogical spotlight hints, race the clock in 3-Peak Relays, and climb from 40 FT coastal sea cliffs to 29,032 FT Himalayan summits."</span>
               <div>
                 <button type="button" class="press-copy-btn" id="copyPressTextBtn">📋 Copy Press Logline</button>
               </div>
@@ -2406,7 +2644,7 @@
             <ul class="press-angles-list">
               <li><strong>🧭 Zero-Guesswork Guarantee:</strong> Every board from 4×4 warmups to 10×10 Alpine Crown grids is verified by a deterministic deduction solver—never requiring a blind 50/50 guess.</li>
               <li><strong>💡 Hints That Teach, Not Spoil:</strong> The interactive Spotlight Field Guide highlights the exact Trail, Pass, or Sector deduction rule and even catches mistaken "X" marks.</li>
-              <li><strong>🏔️ Real-World Altimeter Progression:</strong> Instead of abstract XP, players earn vertical Elevation Feet (+FT) to unlock 112 3D flip-card badges with authentic geology, wildlife &amp; indigenous lore.</li>
+              <li><strong>🏔️ Real-World Altimeter &amp; Jigsaw Shards:</strong> Instead of abstract XP, players earn vertical Elevation Feet (+FT) and Summit Shards to assemble 115 3D flip-card crests with authentic geology, wildlife &amp; indigenous lore.</li>
             </ul>
           </div>
 
