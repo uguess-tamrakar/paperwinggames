@@ -1053,23 +1053,13 @@
       width: 540px;
       height: 960px;
       background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+      box-shadow: 0 0 0 240px rgba(14, 10, 22, 0.94);
       opacity: 0;
       pointer-events: none;
       z-index: 40;
       transition: opacity 0.30s ease;
-    }
-    .modal-layer::before {
-      content: "";
-      position: absolute;
-      left: calc(-1 * var(--stage-pad-x, 0px));
-      right: calc(-1 * var(--stage-pad-x, 0px));
-      top: 0;
-      bottom: 0;
-      background: rgba(14, 10, 22, 0.90);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      z-index: -1;
-      pointer-events: none;
     }
     .modal-layer.active {
       opacity: 1;
@@ -1084,25 +1074,14 @@
       cursor: pointer;
       overflow: visible;
     }
-    #modal-endcard::after {
-      content: "";
-      position: absolute;
-      left: calc(-1 * var(--stage-pad-x, 0px));
-      right: calc(-1 * var(--stage-pad-x, 0px));
-      top: 0;
-      bottom: 0;
-      background: #140F1D;
-      z-index: 0;
-      pointer-events: none;
-    }
 
-    /* Prominent Circular Center Button for Post-Solve Screens 1..4 */
+    /* Prominent Circular Center Button for Post-Solve Screens 1..4 (Icon + TAP HERE only) */
     .center-tap-circle-btn {
       position: absolute;
       left: 50%;
       top: 50%;
-      width: 136px;
-      height: 136px;
+      width: 128px;
+      height: 128px;
       transform: translate(-50%, -50%);
       border-radius: 50%;
       background: radial-gradient(circle at 35% 28%, rgba(245, 158, 11, 0.96) 0%, rgba(180, 83, 9, 0.96) 68%, rgba(120, 53, 15, 0.98) 100%);
@@ -1115,7 +1094,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 3px;
+      gap: 6px;
       cursor: pointer;
       z-index: 44;
       animation: centerCircleFloat 1.15s ease-in-out infinite alternate;
@@ -1134,37 +1113,24 @@
       transform: translate(-50%, -50%) scale(0.93);
     }
     .center-tap-icon {
-      width: 28px;
-      height: 28px;
+      width: 32px;
+      height: 32px;
       fill: #FFFBEB;
       filter: drop-shadow(0 2px 3px rgba(69, 26, 3, 0.75));
-      margin-bottom: 1px;
     }
     .center-tap-main {
       font-family: 'CaesarDressing', 'NationalPark', sans-serif;
-      font-size: 22px;
-      letter-spacing: 1.4px;
+      font-size: 21px;
+      letter-spacing: 1.3px;
       color: #FFFBEB;
-      line-height: 1.05;
+      line-height: 1;
+      text-align: center;
       text-shadow:
         -1.2px -1.2px 0 #451A03,
          1.2px -1.2px 0 #451A03,
         -1.2px  1.2px 0 #451A03,
          1.2px  1.2px 0 #451A03,
          0 2.5px 4px rgba(0, 0, 0, 0.65);
-    }
-    .center-tap-sub {
-      margin-top: 2px;
-      padding: 2px 9px;
-      border-radius: 999px;
-      background: rgba(19, 54, 38, 0.90);
-      border: 1.2px solid rgba(254, 240, 138, 0.85);
-      font-family: 'NationalPark', sans-serif;
-      font-size: 10.5px;
-      font-weight: 900;
-      letter-spacing: 0.8px;
-      color: #FEF3C7;
-      white-space: nowrap;
     }
     @keyframes centerCircleFloat {
       0% {
@@ -1586,8 +1552,7 @@
       <svg class="center-tap-icon" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M9 11.24V7.5C9 6.12 10.12 5 11.5 5S14 6.12 14 7.5v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63l-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.08-.01-.15-.03-.24-.03-.31 0-.59.13-.79.33l-.79.8 4.94 4.94c.27.27.65.44 1.06.44h6.79c.75 0 1.33-.55 1.44-1.28l.75-5.27c.01-.07.02-.14.02-.2 0-.62-.38-1.16-.91-1.38z"/>
       </svg>
-      <span class="center-tap-main">TAP HERE</span>
-      <span class="center-tap-sub">CONTINUE →</span>
+      <span class="center-tap-main">Tap here</span>
     </button>
   </div>
   <div id="modal-barnaby" class="modal-layer">
@@ -1596,8 +1561,7 @@
       <svg class="center-tap-icon" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M9 11.24V7.5C9 6.12 10.12 5 11.5 5S14 6.12 14 7.5v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63l-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.08-.01-.15-.03-.24-.03-.31 0-.59.13-.79.33l-.79.8 4.94 4.94c.27.27.65.44 1.06.44h6.79c.75 0 1.33-.55 1.44-1.28l.75-5.27c.01-.07.02-.14.02-.2 0-.62-.38-1.16-.91-1.38z"/>
       </svg>
-      <span class="center-tap-main">TAP HERE</span>
-      <span class="center-tap-sub">OPEN BAG →</span>
+      <span class="center-tap-main">Tap here</span>
     </button>
   </div>
   <div id="modal-bag-front" class="modal-layer">
@@ -1606,8 +1570,7 @@
       <svg class="center-tap-icon" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M9 11.24V7.5C9 6.12 10.12 5 11.5 5S14 6.12 14 7.5v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63l-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.08-.01-.15-.03-.24-.03-.31 0-.59.13-.79.33l-.79.8 4.94 4.94c.27.27.65.44 1.06.44h6.79c.75 0 1.33-.55 1.44-1.28l.75-5.27c.01-.07.02-.14.02-.2 0-.62-.38-1.16-.91-1.38z"/>
       </svg>
-      <span class="center-tap-main">TAP HERE</span>
-      <span class="center-tap-sub">FLIP CREST ↻</span>
+      <span class="center-tap-main">Tap here</span>
     </button>
   </div>
   <div id="modal-bag-reveal" class="modal-layer">
@@ -1616,8 +1579,7 @@
       <svg class="center-tap-icon" viewBox="0 0 24 24" aria-hidden="true">
         <path d="M9 11.24V7.5C9 6.12 10.12 5 11.5 5S14 6.12 14 7.5v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63l-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.08-.01-.15-.03-.24-.03-.31 0-.59.13-.79.33l-.79.8 4.94 4.94c.27.27.65.44 1.06.44h6.79c.75 0 1.33-.55 1.44-1.28l.75-5.27c.01-.07.02-.14.02-.2 0-.62-.38-1.16-.91-1.38z"/>
       </svg>
-      <span class="center-tap-main">TAP HERE</span>
-      <span class="center-tap-sub">COLLECT →</span>
+      <span class="center-tap-main">Tap here</span>
     </button>
   </div>
   <div id="modal-endcard" class="modal-layer">
