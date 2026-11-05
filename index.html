@@ -49,6 +49,8 @@
 
     html {
       scroll-behavior: smooth;
+      overflow-x: clip;
+      max-width: 100%;
     }
 
     /* Prevent HTML width/height attributes from ever distorting responsive images */
@@ -68,7 +70,8 @@
       color: var(--text-primary);
       line-height: 1.65;
       min-height: 100vh;
-      overflow-x: hidden;
+      max-width: 100%;
+      overflow-x: clip;
     }
 
     /* Subtle starry grid mesh */
@@ -87,9 +90,11 @@
     .container {
       position: relative;
       z-index: 1;
+      width: 100%;
       max-width: 1180px;
       margin: 0 auto;
       padding: 0 24px;
+      overflow-x: clip;
     }
 
     /* Defer rendering for heavy off-screen sections below the fold */
@@ -98,20 +103,20 @@
       contain-intrinsic-size: auto none auto 760px;
     }
 
-    /* Top Navigation Bar */
+    /* Top Navigation Bar (Responsive Desktop Pill + 2026 Popover Scroll-Snap Drawer) */
     .navbar-wrap {
       position: sticky;
-      top: 16px;
+      top: 14px;
       z-index: 50;
-      padding: 0 20px;
-      margin-top: 16px;
+      padding: 0 16px;
+      margin-top: 14px;
     }
 
     header.navbar {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 12px 22px;
-      background: rgba(12, 19, 34, 0.82);
+      padding: 10px 20px;
+      background: rgba(12, 19, 34, 0.86);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border: 1px solid var(--border-subtle);
@@ -119,20 +124,24 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+      gap: 16px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.44);
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       text-decoration: none;
       color: var(--text-primary);
+      flex-shrink: 0;
+      white-space: nowrap;
     }
 
     .brand-wings {
-      width: 46px;
+      width: 42px;
       height: auto;
+      flex-shrink: 0;
       filter: drop-shadow(0 2px 8px rgba(56, 189, 248, 0.35));
       transition: transform 0.25s ease;
     }
@@ -144,8 +153,9 @@
     .brand-text {
       font-family: 'Outfit', sans-serif;
       font-weight: 800;
-      font-size: 1.12rem;
+      font-size: clamp(0.95rem, 1.35vw, 1.12rem);
       letter-spacing: 0.02em;
+      white-space: nowrap;
       background: linear-gradient(135deg, #ffffff 0%, #bae6fd 60%, #c4b5fd 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -154,14 +164,17 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 22px;
+      gap: clamp(12px, 1.55vw, 22px);
+      flex-wrap: nowrap;
     }
 
     .nav-links a {
       color: var(--text-secondary);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: clamp(0.82rem, 0.98vw, 0.9rem);
       font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
       transition: color 0.2s ease;
     }
 
@@ -170,16 +183,248 @@
     }
 
     .nav-cta {
-      padding: 8px 18px;
+      padding: 8px 16px;
       border-radius: 999px;
       background: linear-gradient(135deg, rgba(56, 189, 248, 0.16), rgba(99, 102, 241, 0.18));
       border: 1px solid rgba(56, 189, 248, 0.35);
       color: #e0f2fe !important;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .nav-cta:hover {
       background: linear-gradient(135deg, rgba(56, 189, 248, 0.28), rgba(99, 102, 241, 0.3));
       color: #ffffff !important;
+    }
+
+    .nav-mobile-actions {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .nav-menu-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(168, 85, 247, 0.18));
+      border: 1px solid rgba(56, 189, 248, 0.42);
+      color: #f8fafc;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .nav-menu-btn:hover {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.30), rgba(168, 85, 247, 0.28));
+      border-color: rgba(125, 211, 252, 0.65);
+    }
+
+    .nav-menu-btn:active {
+      transform: scale(0.96);
+    }
+
+    .nav-menu-btn svg {
+      width: 18px;
+      height: 18px;
+      stroke: #7dd3fc;
+      flex-shrink: 0;
+    }
+
+    /* Modern 2026 Navigation Drawer (Top-Layer Popover + Slide-In Panel) */
+    .nav-drawer[popover] {
+      position: fixed;
+      inset: 0;
+      border: none;
+      padding: 0;
+      margin: 0;
+      background: rgba(4, 9, 18, 0.72);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      max-height: none;
+      overflow: hidden;
+      z-index: 999;
+    }
+
+    .nav-drawer[popover]:popover-open {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .nav-drawer-dismiss-target {
+      flex: 1 1 auto;
+      height: 100%;
+      cursor: pointer;
+    }
+
+    .nav-drawer-panel {
+      width: min(86vw, 360px);
+      height: 100%;
+      background: linear-gradient(170deg, rgba(12, 20, 36, 0.98) 0%, rgba(8, 13, 24, 0.99) 100%);
+      border-left: 1px solid rgba(56, 189, 248, 0.32);
+      box-shadow: -20px 0 56px rgba(0, 0, 0, 0.78);
+      padding: 22px 20px 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-y: auto;
+      overscroll-behavior-y: contain;
+      animation: drawerSlideIn 0.24s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    @keyframes drawerSlideIn {
+      from { transform: translateX(100%); opacity: 0.6; }
+      to   { transform: translateX(0); opacity: 1; }
+    }
+
+    .nav-drawer-top {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .nav-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+    }
+
+    .nav-drawer-close {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(148, 163, 184, 0.28);
+      background: rgba(30, 41, 59, 0.65);
+      color: var(--text-primary);
+      font-size: 1.05rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .nav-drawer-close:hover {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: rgba(56, 189, 248, 0.5);
+    }
+
+    .nav-drawer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .nav-drawer-link {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(19, 29, 51, 0.62);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .nav-drawer-link:hover,
+    .nav-drawer-link:focus-visible {
+      background: rgba(56, 189, 248, 0.14);
+      border-color: rgba(56, 189, 248, 0.42);
+      transform: translateX(2px);
+    }
+
+    .nav-drawer-link-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      flex-shrink: 0;
+    }
+
+    .nav-drawer-link-text strong {
+      display: block;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: #f8fafc;
+      line-height: 1.2;
+    }
+
+    .nav-drawer-link-text small {
+      display: block;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .nav-drawer-footer {
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(148, 163, 184, 0.16);
+      display: grid;
+      gap: 10px;
+    }
+
+    .nav-drawer-store-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 14px;
+      border-radius: 12px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.86rem;
+      font-weight: 700;
+      text-decoration: none;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.16), rgba(99, 102, 241, 0.2));
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #e0f2fe;
+    }
+
+    @media (max-width: 1040px) {
+      .nav-links {
+        display: none;
+      }
+      .nav-mobile-actions {
+        display: flex;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .navbar-wrap {
+        padding: 0 10px;
+      }
+      header.navbar {
+        padding: 9px 14px;
+      }
+      .brand-wings {
+        width: 34px;
+      }
+      .brand-text {
+        font-size: 0.88rem;
+      }
+      .nav-mobile-actions .nav-cta {
+        display: none;
+      }
     }
 
     /* Hero Section */
@@ -1546,7 +1791,7 @@
       .hero,
       .summit-top-grid,
       .press-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
       }
 
       .studio-crest-card {
@@ -1554,14 +1799,14 @@
       }
 
       .summit-showcase {
-        padding: 32px 24px;
+        padding: 32px 20px;
       }
 
       .realms-grid,
       .landmarks-grid,
       .landmarks-explainer-banner,
       .pillars-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
       }
 
       .realm-card {
@@ -1570,17 +1815,17 @@
     }
 
     @media (max-width: 680px) {
-      .nav-links a:not(.nav-cta) {
-        display: none;
+      .container {
+        padding: 0 16px;
       }
 
       .summit-feature-pills,
       .press-asset-visual-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
       }
 
       .contact-card {
-        padding: 28px 24px;
+        padding: 28px 20px;
       }
     }
 
@@ -1721,7 +1966,7 @@
 
     @media (max-width: 980px) {
       .rangers-and-emblems-showcase {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
       }
     }
 
@@ -1749,21 +1994,76 @@
         0 28px 68px rgba(0, 0, 0, 0.55),
         inset 0 1px 0 rgba(255, 255, 255, 0.12);
       display: grid;
-      grid-template-columns: minmax(310px, 410px) 1fr;
+      grid-template-columns: minmax(310px, 400px) 1fr;
       gap: 44px;
       align-items: center;
+      transition: grid-template-columns 0.28s ease;
+    }
+
+    .minigame-showcase-card[data-device-mode="tablet"] {
+      grid-template-columns: minmax(360px, 500px) 1fr;
     }
 
     .minigame-device-stage {
       position: relative;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+      gap: 14px;
+    }
+
+    /* 2-Option Device Format Toggle (Phone vs. Tablet) */
+    .minigame-device-toggle {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px;
+      border-radius: 999px;
+      background: rgba(8, 17, 29, 0.88);
+      border: 1px solid rgba(253, 230, 138, 0.32);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.45);
+    }
+
+    .device-mode-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 7px 16px;
+      border-radius: 999px;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .device-mode-btn:hover {
+      color: #ffffff;
+    }
+
+    .device-mode-btn.active {
+      background: linear-gradient(135deg, rgba(52, 211, 153, 0.24), rgba(56, 189, 248, 0.24));
+      border: 1px solid rgba(110, 231, 183, 0.55);
+      color: #fef3c7;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+    }
+
+    .device-mode-btn svg {
+      width: 15px;
+      height: 15px;
+      stroke: currentColor;
+      flex-shrink: 0;
     }
 
     .minigame-device-glow {
       position: absolute;
-      inset: -12px;
+      inset: 28px -12px -12px;
       border-radius: 48px;
       background: radial-gradient(circle at 50% 45%, rgba(52, 211, 153, 0.28), rgba(251, 191, 36, 0.18), transparent 72%);
       filter: blur(26px);
@@ -1775,26 +2075,38 @@
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 392px;
-      background: #090d16;
-      border-radius: 38px;
-      padding: 11px;
-      border: 2px solid rgba(253, 230, 138, 0.48);
+      max-width: 376px;
+      background: linear-gradient(160deg, #162032 0%, #090e17 100%);
+      border-radius: 34px;
+      padding: 8px;
+      border: 1.5px solid rgba(148, 163, 184, 0.34);
       box-shadow:
         0 26px 60px rgba(0, 0, 0, 0.72),
-        0 0 0 1px rgba(15, 23, 42, 0.95),
-        inset 0 2px 6px rgba(255, 255, 255, 0.18);
+        inset 0 1px 2px rgba(255, 255, 255, 0.22);
       display: flex;
       flex-direction: column;
+      transition: max-width 0.28s ease, border-radius 0.28s ease, padding 0.28s ease;
+    }
+
+    .minigame-showcase-card[data-device-mode="tablet"] .minigame-phone-frame {
+      max-width: 492px;
+      border-radius: 26px;
+      padding: 10px;
     }
 
     .minigame-phone-viewport {
       position: relative;
       width: 100%;
       aspect-ratio: 9 / 16;
-      border-radius: 28px;
+      border-radius: 26px;
       overflow: hidden;
-      background: #1b130e;
+      background: #14101c;
+      transition: aspect-ratio 0.28s ease, border-radius 0.28s ease;
+    }
+
+    .minigame-showcase-card[data-device-mode="tablet"] .minigame-phone-viewport {
+      aspect-ratio: 3 / 4;
+      border-radius: 18px;
     }
 
     .minigame-phone-viewport iframe {
@@ -1911,13 +2223,19 @@
     }
 
     @media (max-width: 960px) {
-      .minigame-showcase-card {
-        grid-template-columns: 1fr;
-        padding: 28px 22px;
+      .minigame-showcase-card,
+      .minigame-showcase-card[data-device-mode="tablet"] {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 24px 16px;
+        gap: 28px;
       }
 
       .minigame-rules-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .minigame-controls-row {
+        flex-wrap: wrap;
       }
     }
   </style>
@@ -1929,7 +2247,7 @@
         <img src="assets/paper-wing-wings.png" alt="Paper Wing Games Origami Wings" class="brand-wings" width="46" height="20" />
         <span class="brand-text">PAPER WING GAMES</span>
       </a>
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Primary Navigation">
         <a href="#summit-rangers">Summit Rangers</a>
         <a href="#play-minigame">Play Mini-Game</a>
         <a href="#screenshots">Screenshots</a>
@@ -1938,7 +2256,102 @@
         <a href="#press">Press Kit</a>
         <a href="#support" class="nav-cta">Support</a>
       </nav>
+      <div class="nav-mobile-actions">
+        <a href="#support" class="nav-cta">Support</a>
+        <button
+          type="button"
+          class="nav-menu-btn"
+          id="drawer-open"
+          aria-label="Open navigation menu"
+          aria-expanded="false"
+          aria-controls="mobile-nav-drawer"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="4" y1="7" x2="20" y2="7"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="17" x2="20" y2="17"></line>
+          </svg>
+          <span>Menu</span>
+        </button>
+      </div>
     </header>
+
+    <!-- Modern 2026 Accessible Slide-Out Navigation Drawer (Popover + Scroll-Snap) -->
+    <div id="mobile-nav-drawer" class="nav-drawer" popover="manual" role="dialog" aria-modal="true" aria-label="Site Navigation">
+      <div class="nav-drawer-dismiss-target" id="drawer-dismiss-target" aria-hidden="true"></div>
+      <nav class="nav-drawer-panel" id="drawer-panel" aria-label="Mobile Navigation">
+        <div class="nav-drawer-top">
+          <div class="nav-drawer-header">
+            <a href="index.html" class="brand" data-drawer-link>
+              <img src="assets/paper-wing-wings.png" alt="Paper Wing Games Origami Wings" class="brand-wings" width="38" height="17" />
+              <span class="brand-text">PAPER WING GAMES</span>
+            </a>
+            <button type="button" class="nav-drawer-close" id="drawer-close" aria-label="Close navigation menu">✕</button>
+          </div>
+
+          <div class="nav-drawer-links">
+            <a href="#summit-rangers" class="nav-drawer-link" data-drawer-link>
+              <span class="nav-drawer-link-icon" aria-hidden="true">🏔️</span>
+              <span class="nav-drawer-link-text">
+                <strong>Summit Rangers</strong>
+                <small>Flagship tactical trail puzzle expedition</small>
+              </span>
+            </a>
+            <a href="#play-minigame" class="nav-drawer-link" data-drawer-link>
+              <span class="nav-drawer-link-icon" aria-hidden="true">🎮</span>
+              <span class="nav-drawer-link-text">
+                <strong>Play Mini-Game</strong>
+                <small>Play Trail 3 live in Phone or Tablet view</small>
+              </span>
+            </a>
+            <a href="#screenshots" class="nav-drawer-link" data-drawer-link>
+              <span class="nav-drawer-link-icon" aria-hidden="true">📸</span>
+              <span class="nav-drawer-link-text">
+                <strong>Screenshots</strong>
+                <small>8-slide interactive gameplay gallery</small>
+              </span>
+            </a>
+            <a href="#landmarks" class="nav-drawer-link" data-drawer-link>
+              <span class="nav-drawer-link-icon" aria-hidden="true">🏅</span>
+              <span class="nav-drawer-link-text">
+                <strong>Summit Badges</strong>
+                <small>115 real-world 3D flip Summit Crests</small>
+              </span>
+            </a>
+            <a href="#expedition-realms" class="nav-drawer-link" data-drawer-link>
+              <span class="nav-drawer-link-icon" aria-hidden="true">🧭</span>
+              <span class="nav-drawer-link-text">
+                <strong>Mountain Realms</strong>
+                <small>12 alpine elevation tiers &amp; soundscapes</small>
+              </span>
+            </a>
+            <a href="#press" class="nav-drawer-link" data-drawer-link>
+              <span class="nav-drawer-link-icon" aria-hidden="true">📦</span>
+              <span class="nav-drawer-link-text">
+                <strong>Press Kit</strong>
+                <small>Fact sheet, studio boilerplate &amp; logos</small>
+              </span>
+            </a>
+            <a href="#support" class="nav-drawer-link" data-drawer-link>
+              <span class="nav-drawer-link-icon" aria-hidden="true">✉</span>
+              <span class="nav-drawer-link-text">
+                <strong>Player Support</strong>
+                <small>Contact support@paperwinggames.com</small>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <div class="nav-drawer-footer">
+          <a href="https://apps.apple.com/app/summit-rangers/id6829332312" target="_blank" rel="noopener" class="nav-drawer-store-btn">
+             Download on the App Store
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.paperwinggames.summitrangers" target="_blank" rel="noopener" class="nav-drawer-store-btn">
+            ▶ Get it on Google Play
+          </a>
+        </div>
+      </nav>
+    </div>
   </div>
 
   <div class="container">
@@ -2305,19 +2718,34 @@
         </p>
       </div>
 
-      <div class="minigame-showcase-card">
+      <div class="minigame-showcase-card" id="minigameShowcaseCard" data-device-mode="phone">
         <div class="minigame-device-stage">
+          <div class="minigame-device-toggle" role="group" aria-label="Mini-game device preview format">
+            <button type="button" class="device-mode-btn active" data-device-btn="phone" aria-pressed="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="6" y="2" width="12" height="20" rx="2.5"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+              <span>Phone</span>
+            </button>
+            <button type="button" class="device-mode-btn" data-device-btn="tablet" aria-pressed="false">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="4" y="2" width="16" height="20" rx="2.5"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+              </svg>
+              <span>Tablet</span>
+            </button>
+          </div>
           <div class="minigame-device-glow" aria-hidden="true"></div>
           <div class="minigame-phone-frame">
             <div class="minigame-phone-viewport">
               <iframe
                 id="minigameIframe"
-                src="summit-rangers/play.html?v=20261105b"
+                src="summit-rangers/play.html?v=20261105c"
                 title="Summit Rangers: Tactical Trail Expedition — Interactive Trail 3 Mini-Game"
                 loading="lazy"
                 width="540"
                 height="960"
-                allow="autoplay"
               ></iframe>
             </div>
           </div>
@@ -2364,7 +2792,7 @@
             <button type="button" class="btn-primary" id="restartMinigameBtn">
               ↻ Restart Trail 3
             </button>
-            <a href="summit-rangers/play.html?v=20261105b" target="_blank" rel="noopener" class="btn-secondary">
+            <a href="summit-rangers/play.html?v=20261105c" target="_blank" rel="noopener" class="btn-secondary">
               ↗ Open Fullscreen Mini-Game
             </a>
           </div>
@@ -3085,9 +3513,36 @@
       });
     }
 
-    // 5. Interactive Trail 3 Mini-Game Restart Button
+    // 5. Interactive Trail 3 Mini-Game Restart, Phone/Tablet Toggle & Panel Audio Lifecycle
     const restartMinigameBtn = document.getElementById('restartMinigameBtn');
     const minigameIframe = document.getElementById('minigameIframe');
+    const minigameShowcaseCard = document.getElementById('minigameShowcaseCard');
+    const deviceModeBtns = document.querySelectorAll('[data-device-btn]');
+
+    function pauseMinigameAudioInFrame() {
+      if (!minigameIframe) return;
+      try {
+        if (minigameIframe.contentWindow && typeof minigameIframe.contentWindow.pauseMinigameAudio === 'function') {
+          minigameIframe.contentWindow.pauseMinigameAudio();
+        }
+        if (minigameIframe.contentWindow) {
+          minigameIframe.contentWindow.postMessage({ type: 'minigame-panel-leave' }, '*');
+        }
+      } catch (_) {}
+    }
+
+    function enterMinigamePanelInFrame() {
+      if (!minigameIframe) return;
+      try {
+        if (minigameIframe.contentWindow && typeof minigameIframe.contentWindow.enterMinigamePanel === 'function') {
+          minigameIframe.contentWindow.enterMinigamePanel();
+        }
+        if (minigameIframe.contentWindow) {
+          minigameIframe.contentWindow.postMessage({ type: 'minigame-panel-enter' }, '*');
+        }
+      } catch (_) {}
+    }
+
     if (restartMinigameBtn && minigameIframe) {
       restartMinigameBtn.addEventListener('click', () => {
         try {
@@ -3100,6 +3555,126 @@
           minigameIframe.src = minigameIframe.src;
         }
       });
+    }
+
+    // Phone vs. Tablet 2-Option Device Format Toggle
+    if (minigameShowcaseCard && deviceModeBtns.length > 0) {
+      deviceModeBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const mode = btn.getAttribute('data-device-btn') || 'phone';
+          minigameShowcaseCard.setAttribute('data-device-mode', mode);
+          deviceModeBtns.forEach((b) => {
+            const active = b === btn;
+            b.classList.toggle('active', active);
+            b.setAttribute('aria-pressed', active ? 'true' : 'false');
+          });
+          // Notify iframe immediately & after CSS transition so fitStage() adapts smoothly
+          [0, 90, 190, 300].forEach((delay) => {
+            setTimeout(() => {
+              try {
+                if (minigameIframe && minigameIframe.contentWindow) {
+                  minigameIframe.contentWindow.postMessage({ type: 'minigame-device-mode', mode }, '*');
+                }
+              } catch (_) {}
+            }, delay);
+          });
+        });
+      });
+    }
+
+    // Pause Mini-Game Background Music when mouse leaves or player clicks/scrolls outside the panel
+    if (minigameShowcaseCard) {
+      minigameShowcaseCard.addEventListener('mouseenter', () => {
+        enterMinigamePanelInFrame();
+      });
+      minigameShowcaseCard.addEventListener('mouseleave', () => {
+        pauseMinigameAudioInFrame();
+      });
+
+      document.addEventListener('pointerdown', (e) => {
+        if (!minigameShowcaseCard.contains(e.target)) {
+          pauseMinigameAudioInFrame();
+        } else {
+          enterMinigamePanelInFrame();
+        }
+      }, { passive: true });
+
+      if ('IntersectionObserver' in window) {
+        const panelVisibilityObserver = new IntersectionObserver((entries) => {
+          for (const entry of entries) {
+            if (!entry.isIntersecting || entry.intersectionRatio < 0.15) {
+              pauseMinigameAudioInFrame();
+            }
+          }
+        }, { threshold: [0, 0.15, 0.5] });
+        panelVisibilityObserver.observe(minigameShowcaseCard);
+      }
+    }
+
+    // 6. Modern 2026 Navigation Drawer Controller (Top-Layer Popover + Touch Swipe Dismiss)
+    const navDrawer = document.getElementById('mobile-nav-drawer');
+    const navDrawerPanel = document.getElementById('drawer-panel');
+    const navDrawerDismissTarget = document.getElementById('drawer-dismiss-target');
+    const navDrawerOpenBtn = document.getElementById('drawer-open');
+    const navDrawerCloseBtn = document.getElementById('drawer-close');
+
+    if (navDrawer && navDrawerPanel && navDrawerDismissTarget && navDrawerOpenBtn && navDrawerCloseBtn) {
+      let isDrawerOpen = false;
+      let touchStartX = null;
+
+      function closeNavDrawer() {
+        if (!isDrawerOpen) return;
+        isDrawerOpen = false;
+        document.removeEventListener('keydown', onDrawerKeyDown);
+        navDrawerOpenBtn.setAttribute('aria-expanded', 'false');
+        try { navDrawer.hidePopover(); } catch (_) {}
+        navDrawerOpenBtn.focus({ preventScroll: true });
+      }
+
+      function onDrawerKeyDown(e) {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          closeNavDrawer();
+        }
+      }
+
+      function openNavDrawer() {
+        if (isDrawerOpen) return;
+        try {
+          navDrawer.showPopover();
+        } catch (_) {
+          return;
+        }
+        isDrawerOpen = true;
+        navDrawerOpenBtn.setAttribute('aria-expanded', 'true');
+        document.addEventListener('keydown', onDrawerKeyDown);
+        setTimeout(() => {
+          if (isDrawerOpen) navDrawerCloseBtn.focus({ preventScroll: true });
+        }, 60);
+      }
+
+      navDrawerOpenBtn.addEventListener('click', openNavDrawer);
+      navDrawerCloseBtn.addEventListener('click', closeNavDrawer);
+      navDrawerDismissTarget.addEventListener('click', closeNavDrawer);
+      navDrawer.querySelectorAll('[data-drawer-link]').forEach((link) => {
+        link.addEventListener('click', () => {
+          closeNavDrawer();
+        });
+      });
+
+      // Swipe right on the drawer panel to dismiss on touch devices
+      navDrawerPanel.addEventListener('touchstart', (e) => {
+        if (e.touches && e.touches.length === 1) {
+          touchStartX = e.touches[0].clientX;
+        }
+      }, { passive: true });
+      navDrawerPanel.addEventListener('touchend', (e) => {
+        if (touchStartX !== null && e.changedTouches && e.changedTouches.length === 1) {
+          const dx = e.changedTouches[0].clientX - touchStartX;
+          if (dx > 64) closeNavDrawer();
+        }
+        touchStartX = null;
+      }, { passive: true });
     }
   </script>
 </body>
