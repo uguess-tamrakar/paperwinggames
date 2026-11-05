@@ -753,21 +753,24 @@
     }
 
     .feature-mini-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
-      background: rgba(253, 230, 138, 0.14);
-      border: 1px solid rgba(253, 230, 138, 0.3);
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: rgba(253, 230, 138, 0.12);
+      border: 1px solid rgba(253, 230, 138, 0.32);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
       font-size: 1.05rem;
+      overflow: hidden;
     }
 
     .feature-mini-icon img {
-      width: 20px;
-      height: auto;
+      width: 32px;
+      height: 32px;
+      object-fit: contain;
+      display: block;
     }
 
     .feature-mini-card h4 {
@@ -1563,9 +1566,11 @@
 
     .press-grid {
       display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
       gap: 28px;
       align-items: stretch;
+      min-width: 0;
+      max-width: 100%;
     }
 
     .press-card {
@@ -1576,6 +1581,14 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      min-width: 0;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+    }
+
+    .press-card > div {
+      min-width: 0;
+      max-width: 100%;
     }
 
     .press-card h3 {
@@ -1588,26 +1601,42 @@
 
     .fact-sheet-list {
       display: grid;
+      grid-template-columns: minmax(0, 1fr);
       gap: 11px;
+      min-width: 0;
+      max-width: 100%;
     }
 
     .fact-row {
       display: grid;
-      grid-template-columns: 135px 1fr;
+      grid-template-columns: minmax(92px, 126px) minmax(0, 1fr);
       gap: 12px;
       padding-bottom: 10px;
       border-bottom: 1px solid rgba(255, 255, 255, 0.07);
       font-size: 0.88rem;
+      min-width: 0;
+      max-width: 100%;
     }
 
     .fact-row dt {
       color: var(--text-muted);
       font-weight: 600;
+      min-width: 0;
+      overflow-wrap: anywhere;
+      word-break: break-word;
     }
 
     .fact-row dd {
       color: var(--text-primary);
       font-weight: 600;
+      min-width: 0;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+
+    .fact-row dd a {
+      overflow-wrap: anywhere;
+      word-break: break-all;
     }
 
     .press-boilerplate-box {
@@ -1849,8 +1878,25 @@
         grid-template-columns: minmax(0, 1fr);
       }
 
+      .press-card {
+        padding: 22px 18px;
+      }
+
+      .fact-row {
+        grid-template-columns: 98px minmax(0, 1fr);
+        gap: 10px;
+        font-size: 0.84rem;
+      }
+
       .contact-card {
         padding: 28px 20px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .fact-row {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2px;
       }
     }
 
@@ -2326,12 +2372,7 @@
             </a>
             <a href="#play-minigame" class="nav-drawer-link" data-drawer-link>
               <span class="nav-drawer-link-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <rect x="2" y="6" width="20" height="12" rx="4"></rect>
-                  <path d="M6 12h4M8 10v4"></path>
-                  <circle cx="15.5" cy="11" r="1" fill="currentColor" stroke="none"></circle>
-                  <circle cx="18" cy="13" r="1" fill="currentColor" stroke="none"></circle>
-                </svg>
+                <img src="assets/icons/game_icon_reveal_paw.png" alt="" width="32" height="32" style="width: 30px; height: 30px; object-fit: contain;" />
               </span>
               <span class="nav-drawer-link-text">
                 <strong>Play Mini-Game</strong>
@@ -2340,11 +2381,7 @@
             </a>
             <a href="#screenshots" class="nav-drawer-link" data-drawer-link>
               <span class="nav-drawer-link-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <rect x="3" y="4" width="18" height="16" rx="3"></rect>
-                  <circle cx="8.5" cy="9.5" r="1.5"></circle>
-                  <path d="m21 15-4.5-4.5a1.5 1.5 0 0 0-2.1 0L7 18"></path>
-                </svg>
+                <img src="assets/icons/game_icon_field_guide.png" alt="" width="32" height="32" style="width: 30px; height: 30px; object-fit: contain;" />
               </span>
               <span class="nav-drawer-link-text">
                 <strong>Screenshots</strong>
@@ -2353,10 +2390,7 @@
             </a>
             <a href="#landmarks" class="nav-drawer-link" data-drawer-link>
               <span class="nav-drawer-link-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M12 2.5 19.5 6v6c0 5-3.2 8.6-7.5 9.8C7.7 20.6 4.5 17 4.5 12V6L12 2.5z"></path>
-                  <path d="m8.5 14.5 3.5-5.5 3.5 5.5H8.5z"></path>
-                </svg>
+                <img src="assets/icons/game_icon_summit_crest.png" alt="" width="32" height="32" style="width: 30px; height: 30px; object-fit: contain;" />
               </span>
               <span class="nav-drawer-link-text">
                 <strong>Summit Badges</strong>
@@ -2365,10 +2399,7 @@
             </a>
             <a href="#expedition-realms" class="nav-drawer-link" data-drawer-link>
               <span class="nav-drawer-link-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="m3 19 6.5-11 4.5 7.5 2.5-4L21 19H3z"></path>
-                  <circle cx="17.5" cy="6.5" r="2"></circle>
-                </svg>
+                <img src="assets/icons/game_icon_expedition_realms.png" alt="" width="32" height="32" style="width: 30px; height: 30px; object-fit: contain;" />
               </span>
               <span class="nav-drawer-link-text">
                 <strong>Mountain Realms</strong>
@@ -2377,11 +2408,7 @@
             </a>
             <a href="#press" class="nav-drawer-link" data-drawer-link>
               <span class="nav-drawer-link-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <rect x="3" y="7" width="18" height="13" rx="2.5"></rect>
-                  <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                  <path d="M3 12h18"></path>
-                </svg>
+                <img src="assets/icons/game_icon_ranger_permit.png" alt="" width="32" height="32" style="width: 30px; height: 30px; object-fit: contain;" />
               </span>
               <span class="nav-drawer-link-text">
                 <strong>Press Kit</strong>
@@ -2390,10 +2417,7 @@
             </a>
             <a href="#support" class="nav-drawer-link" data-drawer-link>
               <span class="nav-drawer-link-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <rect x="3" y="5" width="18" height="14" rx="2.5"></rect>
-                  <path d="m3.5 6.5 8.5 6 8.5-6"></path>
-                </svg>
+                <img src="assets/icons/game_icon_settings_compass.png" alt="" width="32" height="32" style="width: 30px; height: 30px; object-fit: contain;" />
               </span>
               <span class="nav-drawer-link-text">
                 <strong>Player Support</strong>
@@ -2490,21 +2514,27 @@
 
             <div class="summit-feature-pills">
               <div class="feature-mini-card">
-                <div class="feature-mini-icon">🧭</div>
+                <div class="feature-mini-icon">
+                  <img src="assets/icons/game_icon_deduction_hint.png" alt="Deduction Hint Trail Lantern Icon" loading="lazy" width="32" height="32" />
+                </div>
                 <div>
                   <h4>100% Pure Logic</h4>
                   <p>Every trail grid (4×4 to 10×10) is verified solvable through pure deduction—never a coin flip.</p>
                 </div>
               </div>
               <div class="feature-mini-card">
-                <div class="feature-mini-icon">⚡</div>
+                <div class="feature-mini-icon">
+                  <img src="assets/icons/game_icon_timed_sprint.png" alt="Timed Sprint Ranger Chronometer Icon" loading="lazy" width="32" height="32" />
+                </div>
                 <div>
                   <h4>Timed Sprint Arena</h4>
                   <p>Race the clock in Trail Blitz &amp; the 3-Stage Triple Peak Relay for Top-10 Pinecone prizes.</p>
                 </div>
               </div>
               <div class="feature-mini-card">
-                <div class="feature-mini-icon">🏔️</div>
+                <div class="feature-mini-icon">
+                  <img src="assets/icons/game_icon_expedition_realms.png" alt="12 Alpine Realms Shield Icon" loading="lazy" width="32" height="32" />
+                </div>
                 <div>
                   <h4>12 Alpine Realms</h4>
                   <p>Ascend handcrafted campaign trails and 365 Daily Peak Expeditions with custom soundscapes.</p>
@@ -2512,7 +2542,7 @@
               </div>
               <div class="feature-mini-card">
                 <div class="feature-mini-icon">
-                  <img src="assets/golden-pinecone.png" alt="Golden Pinecone" loading="lazy" width="20" height="25" />
+                  <img src="assets/icons/game_icon_summit_crest.png" alt="115 World Summit Crests Plaque Icon" loading="lazy" width="32" height="32" />
                 </div>
                 <div>
                   <h4>115 World Summit Crests</h4>
@@ -2931,8 +2961,8 @@
           </div>
         </button>
 
-        <button type="button" class="screenshot-card" data-src="assets/screenshots/06_real_world_mountain_badges.png?v=20261105b" data-title="6. Collect 115 Real-World Summit Crests">
-          <img src="assets/screenshots/06_real_world_mountain_badges.png?v=20261105b" alt="Haystack Rock 235 FT 3D badge reveal screen" loading="lazy" width="720" height="1280" />
+        <button type="button" class="screenshot-card" data-src="assets/screenshots/06_real_world_mountain_badges.png?v=20261105e" data-title="6. Collect 115 Real-World Summit Crests">
+          <img src="assets/screenshots/06_real_world_mountain_badges.png?v=20261105e" alt="Grand Teton 14,000 FT (The 14er Benchmark) 3D Summit Crest reveal screen" loading="lazy" width="720" height="1280" />
           <div class="screenshot-card-meta">
             <span class="screenshot-step">Slide 06 • 115 Summits</span>
             <h4>Collect Iconic World Summits</h4>
